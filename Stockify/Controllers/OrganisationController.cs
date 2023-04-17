@@ -55,6 +55,19 @@ namespace Stockify.Controllers
 
             return View("NewOrganisation", model);
         }
+
+        public IActionResult ListOrganisations()
+        {
+            List<Organisation> organisations = _context.Organisations.OrderBy(b => b.OrgId).ToList(); ;
+
+            var model = new OrganisationViewModel
+            {
+                OrganisationList = organisations
+            };
+
+            // bind products to view
+            return View("ViewOrganisation", model);
+        }
     }
 }
 
