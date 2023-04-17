@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Stockify";
+    ViewBag.Title = "";
 }
 
 <div class="container">
@@ -16,43 +16,17 @@
 
             <div class="card">
 
-                <div class="card-header bg-success text-white">
+                <div class="card-header bg-info text-white" font-weight: bold>
 
-                    Organisations Creation and Tracking
-
-                </div>
-
-                <div class="card-body">
-
-                    <p class="card-text">Create Organisations.</p>
-
-                    <a asp-controller="Organisation" asp-action="Create" class="btn btn-success">Create New Organisation</a>&nbsp;&nbsp;&nbsp;
-
-                    <a asp-controller="Organisation" asp-action="ListOrganisations" class="btn btn-success">View Organisations</a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <div class="card">
-
-                <div class="card-header bg-info text-white">
-
-                    Product Tracking
+                    Manage Organisations
 
                 </div>
 
                 <div class="card-body">
 
-                    <p class="card-text">Track your Product here.</p>
+                    <a asp-controller="Organisation" asp-action="Create" class="btn btn-info">Create New Organisation</a>&nbsp;&nbsp;&nbsp;
 
-                    <a asp-controller="Transaction" asp-action="InitAddTransaction" class="btn btn-info">Create New Product</a>&nbsp;&nbsp;&nbsp;
-
-                    <a asp-controller="Transaction" asp-action="InitViewTransaction" class="btn btn-info">View Products</a>
+                    <a asp-controller="Organisation" asp-action="ListOrganisations" class="btn btn-info">View My Organisations</a>
 
                 </div>
 
