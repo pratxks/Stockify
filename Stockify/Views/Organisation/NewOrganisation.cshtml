@@ -1,0 +1,63 @@
+﻿@model Organisation
+
+@if (ViewBag.NewOrganisation == true)
+{
+    <h2>Create a new Organisation</h2>
+    <form asp-action="CreateOrganisation">
+        <div class="form-group">
+            <label for="Name">Organisation Name:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Location">Location:</label>
+            <input type="text" class="form-control" id="Location" name="Location" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email:</label>
+            <input type="text" class="form-control" id="Email" name="Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Phone">Phone:</label>
+            <input type="text" class="form-control" id="Phone" name="Phone" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Organisation</button>
+    </form>
+}
+else
+{
+    <h2>Organisation @Model.Name Created Successfully</h2>
+    <br />
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Organisation ID:</td>
+                <td>@Model.OrgId</td>
+            </tr>
+            <tr>
+                <td>Location:</td>
+                <td>@Model.Location</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <td>Creation Date:</td>
+                <td>@Model.CreationDate</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Organisation" asp-action="ListOrganisations" class="btn btn-success">View Organisations</a>
+    <a asp-controller="Organisation" asp-action="Create" class="btn btn-success">Create Another Organisation</a>
+}
+
+

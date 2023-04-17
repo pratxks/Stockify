@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Stockify";
+}
+
+<div class="container">
+
+    <h1>@ViewBag.Title</h1>
+
+    <p>Welcome to your personal finance dashboard! Here you can keep track of your finances and spending.</p>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-header bg-success text-white">
+
+                    Organisations Creation and Tracking
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-text">Create Organisations.</p>
+
+                    <a asp-controller="Organisation" asp-action="Create" class="btn btn-success">Create New Organisation</a>&nbsp;&nbsp;&nbsp;
+
+                    <a asp-controller="Organisation" asp-action="ListBudgets" class="btn btn-success">View Organisations</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <div class="card-header bg-info text-white">
+
+                    Product Tracking
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-text">Track your Product here.</p>
+
+                    <a asp-controller="Transaction" asp-action="InitAddTransaction" class="btn btn-info">Create New Product</a>&nbsp;&nbsp;&nbsp;
+
+                    <a asp-controller="Transaction" asp-action="InitViewTransaction" class="btn btn-info">View Products</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+</div>
+
+
+
+@section styles {
+
+    <link href="~/css/site.css" rel="stylesheet" />
+
+}
