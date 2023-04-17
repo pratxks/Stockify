@@ -16,7 +16,7 @@
 
             <div class="card">
 
-                <div class="card-header bg-info text-white" font-weight: bold>
+                <div class="card-header bg-custom text-white" font-weight: bold>
 
                     Manage Organisations
 
@@ -24,9 +24,9 @@
 
                 <div class="card-body">
 
-                    <a asp-controller="Organisation" asp-action="Create" class="btn btn-info">Create New Organisation</a>&nbsp;&nbsp;&nbsp;
+                    <a asp-controller="Organisation" asp-action="Create" class="btn btn-organisation-1">Create New Organisation</a>
 
-                    <a asp-controller="Organisation" asp-action="ListOrganisations" class="btn btn-info">View My Organisations</a>
+                    <a asp-controller="Organisation" asp-action="ListOrganisations" class="btn btn-organisation-2">View My Organisations</a>
 
                 </div>
 
@@ -44,6 +44,5 @@
 
 @section styles {
 
-    <link href="~/css/site.css" rel="stylesheet" />
 
 }

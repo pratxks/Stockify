@@ -19,6 +19,11 @@ namespace Stockify.Controllers
             _context = context1;
         }
 
+        public IActionResult Dashboard()
+        {
+            return View("Dashboard");
+        }
+
         // GET: /<controller>/
         public IActionResult Index()
         {

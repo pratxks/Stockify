@@ -6,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @*<title>Stockify</title>*@
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @if (ViewContext.RouteData.Values["action"].ToString() != "Dashboard")
+    {
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    }
+
     <link rel="stylesheet" href="~/css/style.css" />
+
 
     <!--
       - favicon
@@ -57,7 +62,7 @@
                         </li>
 
                         <li>
-                            <a class="navbar-link icon-box" asp-area="" asp-controller="Home" asp-action="Index">
+                            <a class="navbar-link icon-box" asp-area="" asp-controller="Organisation" asp-action="ListOrganisations">
                                 <span class="material-symbols-rounded  icon">list</span>
 
                                 <span>Organisations</span>

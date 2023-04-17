@@ -1,0 +1,504 @@
+﻿@model Organisation
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/style.css" />
+}
+
+<!-- ... -->
+
+
+<main>
+    <article class="container article">
+
+        <h2 class="h2 article-title">Hi!</h2>
+
+        <p class="article-subtitle">Welcome to Dashboard!</p>
+
+        <!--
+          - #HOME
+        -->
+
+        <section class="home">
+
+            <div class="card profile-card">
+
+                <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+                    <span class="material-symbols-rounded  icon">more_horiz</span>
+                </button>
+
+                <ul class="ctx-menu">
+
+                    <li class="ctx-item">
+                        <button class="ctx-menu-btn icon-box">
+                            <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
+
+                            <span class="ctx-menu-text">Edit</span>
+                        </button>
+                    </li>
+
+                    <li class="ctx-item">
+                        <button class="ctx-menu-btn icon-box">
+                            <span class="material-symbols-rounded  icon" aria-hidden="true">cached</span>
+
+                            <span class="ctx-menu-text">Help</span>
+                        </button>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li class="ctx-item">
+                        <button class="ctx-menu-btn red icon-box">
+                            <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
+
+                            <span class="ctx-menu-text">Delete</span>
+                        </button>
+                    </li>
+
+                </ul>
+
+                <div class="profile-card-wrapper">
+
+                    <figure class="card-avatar">
+                        <img src="~/images/org-avatar.jpg" alt="Elizabeth Foster" width="48" height="48">
+                    </figure>
+
+                    <div>
+                        <p class="card-title">Organisation Name</p>
+
+                        <p class="card-subtitle">Organisation Description</p>
+                    </div>
+
+                </div>
+
+                <ul class="contact-list">
+
+                    <li>
+                        <a href="mailto:xyz@mail.com" class="contact-link icon-box">
+                            <span class="material-symbols-rounded  icon">mail</span>
+
+                            <p class="text">xyz@mail.com</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tel:00123456789" class="contact-link icon-box">
+                            <span class="material-symbols-rounded  icon">call</span>
+
+                            <p class="text">+00 123-456-789</p>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="divider card-divider"></div>
+
+                <ul class="revenue-list">
+
+                    <li class="revenue-item icon-box">
+
+                        <button class="btn btn-dashing" data-load-more>
+                            <span class="spiner"></span>
+
+                            <span>New Job Work</span>
+                        </button>
+
+                    </li>
+
+                    <li class="revenue-item icon-box">
+
+                        <button class="btn btn-dashing" data-load-more>
+                            <span class="spiner"></span>
+
+                            <span>View Job Works</span>
+                        </button>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="card-wrapper">
+
+                <div class="card task-card">
+
+                    <div class="card-icon icon-box green">
+                        <span class="material-symbols-rounded  icon">task_alt</span>
+                    </div>
+
+                    <div>
+                        <data class="card-data" value="21">21</data>
+
+                        <p class="card-text">Job Works Completed</p>
+                    </div>
+
+                </div>
+
+                <div class="card task-card">
+
+                    <div class="card-icon icon-box blue">
+                        <span class="material-symbols-rounded  icon">drive_file_rename_outline</span>
+                    </div>
+
+                    <div>
+                        <data class="card-data" value="21">21</data>
+
+                        <p class="card-text">Job Works Inprogress</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card revenue-card">
+
+                <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+                    <span class="material-symbols-rounded  icon">more_horiz</span>
+                </button>
+
+                <ul class="ctx-menu">
+
+                    <li class="ctx-item">
+                        <button class="ctx-menu-btn icon-box">
+                            <span class="material-symbols-rounded  icon" aria-hidden="true">cached</span>
+
+                            <span class="ctx-menu-text">Help</span>
+                        </button>
+                    </li>
+
+                </ul>
+
+                <p class="card-title">Inventory</p>
+
+                <button class="btn btn-dashing" data-load-more>
+                    <span class="spiner"></span>
+
+                    <span>Track Inventory</span>
+                </button>
+
+                <div class="divider card-divider"></div>
+
+                <p class="card-title">Products</p>
+
+                <ul class="revenue-list">
+
+                    <li class="revenue-item icon-box">
+
+                        <button class="btn btn-dashing" data-load-more>
+                            <span class="spiner"></span>
+
+                            <span>Create Product</span>
+                        </button>
+
+                    </li>
+
+                    <li class="revenue-item icon-box">
+
+                        <button class="btn btn-dashing" data-load-more>
+                            <span class="spiner"></span>
+
+                            <span>List Products</span>
+                        </button>
+
+                    </li>
+
+                </ul>
+
+                <div class="divider card-divider"></div>
+
+                <p class="card-title">Stock Orders</p>
+
+                <ul class="revenue-list">
+
+                    <li class="revenue-item icon-box">
+
+                        <button class="btn btn-dashing" data-load-more>
+                            <span class="spiner"></span>
+
+                            <span>New Load</span>
+                        </button>
+
+                    </li>
+
+                    <li class="revenue-item icon-box">
+
+                        <button class="btn btn-dashing" data-load-more>
+                            <span class="spiner"></span>
+
+                            <span>View Loads</span>
+                        </button>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+
+
+        <!--
+          - #PROJECTS
+        -->
+
+        <section class="projects">
+
+            <div class="section-title-wrapper">
+                <h2 class="section-title">Recent Job Works</h2>
+
+                <button class="btn btn-link icon-box">
+                    <span>View All</span>
+
+                    <span class="material-symbols-rounded  icon" aria-hidden="true">arrow_forward</span>
+                </button>
+            </div>
+
+            <ul class="project-list">
+
+                <li class="project-item">
+                    <div class="card project-card">
+
+                        <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+                            <span class="material-symbols-rounded  icon">more_horiz</span>
+                        </button>
+
+                        <ul class="ctx-menu">
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">done</span>
+
+                                    <span class="ctx-menu-text">Mark Done</span>
+                                </button>
+                            </li>
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
+
+                                    <span class="ctx-menu-text">Edit</span>
+                                </button>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn red icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
+
+                                    <span class="ctx-menu-text">Delete</span>
+                                </button>
+                            </li>
+
+                        </ul>
+
+                        <time class="card-date" datetime="2022-04-09">Apr 09, 2022</time>
+
+                        <h3 class="card-title">
+                            <a href="#">Job Work #1</a>
+                        </h3>
+
+                        <div class="card-badge blue">Customer Name #1</div>
+
+                        <p class="card-text">
+                            Job Works are new Projects (work orders). You can add new product entry (product being used for this job-work) using the "New Entry" button. The "View More" displays a list of Entries as well as details aboout the job work.
+                        </p>
+
+                        <div class="divider card-divider"></div>
+
+                        <ul class="revenue-list">
+
+                            <li class="revenue-item icon-box">
+
+                                <button class="btn btn-dashing" data-load-more>
+                                    <span class="spiner"></span>
+
+                                    <span>New Entry</span>
+                                </button>
+
+                            </li>
+
+                            <li class="revenue-item icon-box">
+
+                                <button class="btn btn-dashing" data-load-more>
+                                    <span class="spiner"></span>
+
+                                    <span>View More</span>
+                                </button>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </li>
+
+                <li class="project-item">
+                    <div class="card project-card">
+
+                        <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+                            <span class="material-symbols-rounded  icon">more_horiz</span>
+                        </button>
+
+                        <ul class="ctx-menu">
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">done</span>
+
+                                    <span class="ctx-menu-text">Mark Done</span>
+                                </button>
+                            </li>
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
+
+                                    <span class="ctx-menu-text">Edit</span>
+                                </button>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn red icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
+
+                                    <span class="ctx-menu-text">Delete</span>
+                                </button>
+                            </li>
+
+                        </ul>
+
+                        <time class="card-date" datetime="2022-04-09">Apr 09, 2022</time>
+
+                        <h3 class="card-title">
+                            <a href="#">Job Work #2</a>
+                        </h3>
+
+                        <div class="card-badge blue">Custome Name #2</div>
+
+                        <p class="card-text">
+                            Job Works are new Projects (work orders). You can add new product entry (product being used for this job-work) using the "New Entry" button. The "View More" displays a list of Entries as well as details aboout the job work.
+                        </p>
+
+                        <div class="divider card-divider"></div>
+
+                        <ul class="revenue-list">
+
+                            <li class="revenue-item icon-box">
+
+                                <button class="btn btn-dashing" data-load-more>
+                                    <span class="spiner"></span>
+
+                                    <span>New Entry</span>
+                                </button>
+
+                            </li>
+
+                            <li class="revenue-item icon-box">
+
+                                <button class="btn btn-dashing" data-load-more>
+                                    <span class="spiner"></span>
+
+                                    <span>View More</span>
+                                </button>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </li>
+
+                <li class="project-item">
+                    <div class="card project-card">
+
+                        <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+                            <span class="material-symbols-rounded  icon">more_horiz</span>
+                        </button>
+
+                        <ul class="ctx-menu">
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">done</span>
+
+                                    <span class="ctx-menu-text">Mark Done</span>
+                                </button>
+                            </li>
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
+
+                                    <span class="ctx-menu-text">Edit</span>
+                                </button>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li class="ctx-item">
+                                <button class="ctx-menu-btn red icon-box">
+                                    <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
+
+                                    <span class="ctx-menu-text">Delete</span>
+                                </button>
+                            </li>
+
+                        </ul>
+
+                        <time class="card-date" datetime="2022-04-09">Apr 09, 2022</time>
+
+                        <h3 class="card-title">
+                            <a href="#">Job Work #3</a>
+                        </h3>
+
+                        <div class="card-badge blue">Customer Name #3</div>
+
+                        <p class="card-text">
+                            Job Works are new Projects (work orders). You can add new product entry (product being used for this job-work) using the "New Entry" button. The "View More" displays a list of Entries as well as details aboout the job work.
+                        </p>
+
+                        <div class="divider card-divider"></div>
+
+                        <ul class="revenue-list">
+
+                            <li class="revenue-item icon-box">
+
+                                <button class="btn btn-dashing" data-load-more>
+                                    <span class="spiner"></span>
+
+                                    <span>New Entry</span>
+                                </button>
+
+                            </li>
+
+                            <li class="revenue-item icon-box">
+
+                                <button class="btn btn-dashing" data-load-more>
+                                    <span class="spiner"></span>
+
+                                    <span>View More</span>
+                                </button>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </section>
+
+    </article>
+</main>
+

@@ -1,34 +1,40 @@
 ﻿@model OrganisationViewModel
+
 <h2>Organisations</h2>
 <br />
 <table class="table">
     <thead>
         <tr>
             <th>ID</th>
-            <th align="center">Name</th>
-            <th align="center">Location</th>
-            <th align="center">Email</th>
-            <th align="center">Phone</th>
-            <th align="center">Date Created</th>
-            <th align="center"></th>
+            <th align="left">Name</th>
+            <th align="left">Location</th>
+            <th align="left">Email</th>
+            <th align="left">Phone</th>
+            <th align="left">Date Created</th>
+            <th align="left"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var budget in @Model.OrganisationList)
+        @foreach (var organisation in @Model.OrganisationList)
         {
             <tr>
-                <td>@budget.OrgId</td>
-                <td align="center">@budget.Name</td>
-                <td align="center">@budget.Location</td>
-                <td align="center">@budget.Email</td>
-                <td align="center">@budget.Phone</td>
-                <td align="center">@budget.CreationDate</td>
-                <td align="center">
-                    <a asp-controller="Budget" asp-action="Delete" asp-route-id="@budget.OrgId" class="btn btn-info">Dashboard</a>
+                <td>@organisation.OrgId</td>
+                <td align="left">@organisation.Name</td>
+                <td align="left">@organisation.Location</td>
+                <td align="left">@organisation.Email</td>
+                <td align="left">@organisation.Phone</td>
+                <td align="left">@organisation.CreationDate</td>
+                <td align="left">
+                    <a asp-controller="Organisation" asp-action="Dashboard" asp-route-id="@organisation.OrgId" class="btn btn-dashboard">Dashboard</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-controller="Budget" asp-action="Index" class="btn btn-info">Back</a>
+<a asp-controller="Budget" asp-action="Index" class="btn btn-dashboard">Back</a>
 
+
+@section styles {
+
+
+}
