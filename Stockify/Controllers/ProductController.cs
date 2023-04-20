@@ -29,9 +29,9 @@ namespace Stockify.Controllers
 
         // GET: Product/Create
         [HttpGet]
-        public IActionResult Create(string id)
+        public async Task<IActionResult> Create(string id)
         {
-            var org = _ocontext.Organisations.Find(id);
+            var org = await _ocontext.Organisations.FindAsync(id);
 
             if (org == null)
             {
@@ -40,7 +40,7 @@ namespace Stockify.Controllers
 
             var viewModel = new ProductViewModel
             {
-                OrgId = org.OrgId,
+                ProductOrgId = org.OrgId,
                 OrgName = org.Name
             };
 
@@ -54,83 +54,24 @@ namespace Stockify.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProduct(ProductViewModel viewModel)
         {
-            //string pname = formCollection["Name"];
-            //string orgid = formCollection["OrgId"];
-            //string orgname = formCollection["OrgName"];
-            //decimal pcostperunit = Decimal.Parse(formCollection["CostPerUnit"]);
-            //decimal pwperunit = Decimal.Parse(formCollection["WeightPerUnit"]);
-            //decimal pcostperunit100 = Decimal.Parse(formCollection["CostPer100Sqft"]);
-            //decimal pwperunit100 = Decimal.Parse(formCollection["WeightPer100Sqft"]);
-
-            ProductViewModel viewModel1 = new ProductViewModel();
-
             if (ModelState.IsValid)
             {
-                viewModel1.product = new Product
+                var product = new Product
                 {
                     Name = viewModel.Name,
-                    OrgId = viewModel.OrgId,
+                    OrgId = viewModel.ProductOrgId,
                     CostPerUnit = viewModel.CostPerUnit,
                     WeightPerUnit = viewModel.WeightPerUnit,
                     CostPer100Sqft = viewModel.CostPer100Sqft,
                     WeightPer100Sqft = viewModel.WeightPer100Sqft
                 };
 
-                viewModel1.Name = viewModel.Name;
-                viewModel1.OrgId = viewModel.OrgId;
-                viewModel1.CostPerUnit = viewModel.CostPerUnit;
-                viewModel1.WeightPerUnit = viewModel.WeightPerUnit;
-                viewModel1.CostPer100Sqft = viewModel.CostPer100Sqft;
-                viewModel1.WeightPer100Sqft = viewModel.WeightPer100Sqft;
-                //viewModel1.ProductId = product1.ProductId;
-                //viewModel1.product = product1;
-                viewModel1.ProductList = new List<Product>();
-
-                _pcontext.Add(viewModel1.product);
-
+                _pcontext.Add(product);
                 await _pcontext.SaveChangesAsync();
             }
 
             return View("CreateProduct", viewModel);
         }
-
-        //// POST: Product/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> CreateProduct(IFormCollection formCollection)
-        //{
-        //    string pname = formCollection["Name"];
-        //    string orgid = formCollection["OrgId"];
-        //    string orgname = formCollection["OrgName"];
-        //    decimal pcostperunit = Decimal.Parse(formCollection["CostPerUnit"]);
-        //    decimal pwperunit = Decimal.Parse(formCollection["WeightPerUnit"]);
-        //    decimal pcostperunit100 = Decimal.Parse(formCollection["CostPer100Sqft"]);
-        //    decimal pwperunit100 = Decimal.Parse(formCollection["WeightPer100Sqft"]);
-
-        //    ProductViewModel viewModel1 = new ProductViewModel();
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        var product1 = new Product
-        //        {
-        //            Name = pname,
-        //            OrgId = orgid,
-        //            CostPerUnit = pcostperunit,
-        //            WeightPerUnit = pwperunit,
-        //            CostPer100Sqft = pcostperunit100,
-        //            WeightPer100Sqft = pwperunit100
-        //        };
-
-        //        viewModel1.OrgId = orgid;
-        //        viewModel1.OrgName = orgname;
-        //        viewModel1.product = product1;
-
-        //        _pcontext.Add(product1);
-        //        await _pcontext.SaveChangesAsync();
-        //    }
-
-        //    return View("CreateProduct", viewModel1);
-        //}
     }
 }
 
