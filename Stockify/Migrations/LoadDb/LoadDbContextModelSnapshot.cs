@@ -7,10 +7,10 @@ using Stockify.Models;
 
 #nullable disable
 
-namespace Stockify.Migrations
+namespace Stockify.Migrations.LoadDb
 {
-    [DbContext(typeof(OrganisationDbContext))]
-    partial class OrganisationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(LoadDbContext))]
+    partial class LoadDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,28 +19,16 @@ namespace Stockify.Migrations
                 .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Stockify.Models.Organisation", b =>
+            modelBuilder.Entity("Stockify.Models.Load", b =>
                 {
-                    b.Property<string>("OrgId")
+                    b.Property<string>("LoadId")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("OrgId");
+                        .HasColumnName("LoadId");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -48,21 +36,15 @@ namespace Stockify.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("OrgId")
                         .IsRequired()
-                        .HasMaxLength(20)
+                        .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                    b.HasKey("LoadId");
 
-                    b.HasKey("OrgId");
-
-                    b.ToTable("Organisations", (string)null);
+                    b.ToTable("Loads", (string)null);
                 });
 #pragma warning restore 612, 618
         }

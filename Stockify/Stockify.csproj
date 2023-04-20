@@ -17,6 +17,7 @@
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="Views\Organisation\" />
     <None Remove="Views\Product\" />
+    <None Remove="Views\Load\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="6.10.9" />
@@ -39,6 +40,7 @@
     <Folder Include="Views\Organisation\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Views\Product\" />
+    <Folder Include="Views\Load\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\" />

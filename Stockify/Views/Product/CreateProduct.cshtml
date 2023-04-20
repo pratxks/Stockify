@@ -73,8 +73,8 @@ else
         </tbody>
     </table>
 
-    <a asp-controller="Product" asp-action="ListProducts" class="btn btn-create-organisation">View Products</a>
-    <a asp-controller="Product" asp-action="Create" class="btn btn-create-organisation">Create Another Product</a>
+    <a asp-controller="Product" asp-action="ListProducts" asp-route-id="@Model.ProductOrgId" class="btn btn-create-organisation">View Products</a>
+    <a asp-controller="Product" asp-action="Create" asp-route-id="@Model.ProductOrgId" class="btn btn-create-organisation">Create Another Product</a>
 }
 
 @section styles {

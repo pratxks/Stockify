@@ -1,0 +1,46 @@
+﻿@model LoadListViewModel
+
+<h2>Loads</h2>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th align="left">Name/ID</th>
+            <th align="left">Organisation</th>
+            <th align="left">Date Created</th>
+            <th align="left"></th>
+            <th align="left"></th>
+            <th align="left"></th>
+            <th align="left"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var organisation in @Model.LoadList)
+        {
+            <tr>
+                <td align="left">@organisation.Name</td>
+                <td align="left">@organisation.OrgId</td>
+                <td align="left">@organisation.CreationDate</td>
+                <td align="left">
+                    <a asp-controller="Load" asp-action="InitDashboard" asp-route-id="@organisation.OrgId" class="btn btn-dashboard">Add Entry</a>
+                </td>
+                <td align="left">
+                    <a asp-controller="Load" asp-action="InitDashboard" asp-route-id="@organisation.OrgId" class="btn btn-dashboard">View Entries</a>
+                </td>
+                <td align="left">
+                    <a asp-controller="Load" asp-action="Edit"  class="btn btn-primary">Edit</a>
+                </td>
+                <td align="left">
+                    <a asp-controller="Load" asp-action="Delete"  class="btn btn-danger" onclick="return confirm('Are you sure want to delete this Load? Action cannot be restored');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Budget" asp-action="Index" class="btn btn-dashboard">Back</a>
+
+
+@section styles {
+
+
+}

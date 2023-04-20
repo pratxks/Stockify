@@ -8,11 +8,11 @@ using Stockify.Models;
 
 #nullable disable
 
-namespace Stockify.Migrations.ProductDb
+namespace Stockify.Migrations
 {
-    [DbContext(typeof(ProductDbContext))]
-    [Migration("20230419054617_ProductMigration")]
-    partial class ProductMigration
+    [DbContext(typeof(OrganisationDbContext))]
+    [Migration("20230420063600_OrganisationMigration")]
+    partial class OrganisationMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,28 +21,28 @@ namespace Stockify.Migrations.ProductDb
                 .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Stockify.Models.Product", b =>
+            modelBuilder.Entity("Stockify.Models.Organisation", b =>
                 {
-                    b.Property<string>("ProductId")
+                    b.Property<string>("OrgId")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("ProductId");
-
-                    b.Property<decimal?>("CostPer100Sqft")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<decimal?>("CostPerUnit")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnName("OrgId");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -50,27 +50,21 @@ namespace Stockify.Migrations.ProductDb
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("OrgId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<decimal?>("WeightPer100Sqft")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasMaxLength(20)
                         .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("varchar(20)");
 
-                    b.Property<decimal?>("WeightPerUnit")
+                    b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(20)
+                        .HasMaxLength(50)
                         .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("varchar(50)");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("OrgId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Organisations", (string)null);
                 });
 #pragma warning restore 612, 618
         }

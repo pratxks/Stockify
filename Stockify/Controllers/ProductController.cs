@@ -60,10 +60,10 @@ namespace Stockify.Controllers
                 {
                     Name = viewModel.Name,
                     OrgId = viewModel.ProductOrgId,
-                    CostPerUnit = viewModel.CostPerUnit,
-                    WeightPerUnit = viewModel.WeightPerUnit,
-                    CostPer100Sqft = viewModel.CostPer100Sqft,
-                    WeightPer100Sqft = viewModel.WeightPer100Sqft
+                    CostPerUnit = Math.Round(viewModel.CostPerUnit, 2),
+                    WeightPerUnit = Math.Round(viewModel.WeightPerUnit, 2),
+                    CostPer100Sqft = Math.Round(viewModel.CostPer100Sqft, 2),
+                    WeightPer100Sqft = Math.Round(viewModel.WeightPer100Sqft, 2)
                 };
 
                 _pcontext.Add(product);
@@ -71,6 +71,33 @@ namespace Stockify.Controllers
             }
 
             return View("CreateProduct", viewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListProducts(string id)
+        {
+            var org = await _ocontext.Organisations.FindAsync(id);
+
+            if (org == null)
+            {
+                return NotFound();
+            }
+
+            List<Product> products = _pcontext.Products.Where(b => b.OrgId == id).ToList();
+
+            if(products == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new ProductListViewModel
+            {
+                OrgName = org.Name,
+                ProductList = products
+            };
+
+            // bind products to view
+            return View("ViewProducts", viewModel);
         }
     }
 }

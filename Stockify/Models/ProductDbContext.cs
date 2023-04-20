@@ -9,7 +9,7 @@ namespace Stockify.Models
         {
         }
 
-        public DbSet<Product> Organisations { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,25 +36,29 @@ namespace Stockify.Models
                 entity.Property(e => e.CostPerUnit)
                     .IsRequired()
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.WeightPerUnit)
                     .IsRequired()
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.CostPer100Sqft)
                     .IsRequired()
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.WeightPer100Sqft)
                     .IsRequired()
                     .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.CreationDate)
-                    .HasColumnType("date");
+                    .HasColumnType("datetime");
             });
         }
     }

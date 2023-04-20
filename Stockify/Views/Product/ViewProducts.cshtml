@@ -1,0 +1,46 @@
+﻿@model ProductListViewModel
+
+<h2>Products for @Model.OrgName</h2>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th align="left">Product</th>
+            <th align="left">CostPerUnit</th>
+            <th align="left">WeightPerUnit</th>
+            <th align="left">CostPer100Sqft</th>
+            <th align="left">WeightPer100Sqft</th>
+            <th align="left">CreationDate</th>
+            <th align="left"></th>
+            <th align="left"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in @Model.ProductList)
+        {
+            <tr>
+                <td align="left">@product.Name</td>
+                <td align="left">@product.CostPerUnit</td>
+                <td align="left">@product.WeightPerUnit</td>
+                <td align="left">@product.CostPer100Sqft</td>
+                <td align="left">@product.WeightPer100Sqft</td>
+                <td align="left">@product.CreationDate</td>
+
+                <td align="left">
+                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId" class="btn btn-primary">Edit</a>
+                </td>
+                <td align="left">
+                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this product?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Product" asp-action="Index" class="btn btn-dashboard">Back</a>
+
+
+@section styles {
+
+
+}

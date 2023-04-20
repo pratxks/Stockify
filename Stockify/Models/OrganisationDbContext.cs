@@ -48,7 +48,7 @@ namespace Stockify.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.CreationDate)
-                    .HasColumnType("date");
+                    .HasColumnType("datetime");
             });
         }
     }

@@ -1,0 +1,52 @@
+﻿@model LoadViewModel
+
+@if (ViewBag.NewLoad == true)
+{
+    <h2>Create a new Load</h2>
+    <form asp-controller="Load" asp-action="NewLoad" method="post">
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="LoadId" name="LoadId" value="@Model.LoadId">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="LoadOrgId" name="LoadOrgId" value="@Model.LoadOrgId">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="OrgName" name="OrgName" value="@Model.OrgName">
+        </div>
+
+        <div class="form-group">
+            <label for="Name">Load Name:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <button type="submit" class="btn btn-create-organisation">Proceed</button>
+    </form>
+}
+else
+{
+    <h2>Load @Model.Name Created Successfully</h2>
+    <br />
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Organisation Name:</td>
+                <td>@Model.OrgName</td>
+            </tr>
+            <tr>
+                <td>Creation Date:</td>
+                <td>@Model.CreationDate</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Load" asp-action="LoadEntry" asp-route-id="@Model.LoadId" class="btn btn-create-organisation">Add Load Entry</a>
+    <a asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.LoadId" class="btn btn-create-organisation">View Loads</a>
+}
+
+@section styles {
+
+
+}
+
