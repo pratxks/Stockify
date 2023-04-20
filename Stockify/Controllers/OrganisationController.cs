@@ -19,10 +19,32 @@ namespace Stockify.Controllers
             _context = context1;
         }
 
-        public IActionResult Dashboard()
+        // GET: Budget/Create
+        public IActionResult InitDashboard(string id)
         {
-            return View("Dashboard");
+            ViewBag.Dashboard = true;
+
+            var organisation = _context.Organisations.Find(id);
+
+            if (organisation == null)
+            {
+                return NotFound();
+            }
+
+            return View("Dashboard", organisation);
         }
+
+        //public async Task<IActionResult> ViewDashboard(string orgId)
+        //{
+        //    var organisation = await _context.Organisations.FindAsync(orgId);
+
+        //    if (organisation == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View("Dashboard");
+        //}
 
         // GET: /<controller>/
         public IActionResult Index()
@@ -49,9 +71,10 @@ namespace Stockify.Controllers
                 var organisation = new Organisation
                 {
                     Name = model.Name,
+                    Type = model.Type,
                     Location = model.Location,
                     Email = model.Email,
-                    Phone = model.Phone,
+                    Phone = model.Phone
                 };
 
                 _context.Add(organisation);

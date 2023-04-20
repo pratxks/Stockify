@@ -1,0 +1,84 @@
+﻿@model ProductViewModel
+
+@if (ViewBag.NewProduct == true)
+{
+    <h2>Create a new Product</h2>
+    <form asp-controller="Product" asp-action="CreateProduct" method="post">
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="OrgId" name="OrgId" value="@Model.OrgId">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="OrgName" name="OrgName" value="@Model.OrgName">
+        </div>
+
+        <div class="form-group">
+            <label for="Name">Product Name:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="CostPerUnit">CostPerUnit:</label>
+            <input type="number" class="form-control" id="CostPerUnit" name="CostPerUnit" required>
+        </div>
+
+        <div class="form-group">
+            <label for="WeightPerUnit">WeightPerUnit:</label>
+            <input type="number" class="form-control" id="WeightPerUnit" name="WeightPerUnit" required>
+        </div>
+
+        <div class="form-group">
+            <label for="CostPer100Sqft">CostPer100Sqft:</label>
+            <input type="number" class="form-control" id="CostPer100Sqft" name="CostPer100Sqft" required>
+        </div>
+
+        <div class="form-group">
+            <label for="WeightPer100Sqft">WeightPer100Sqft:</label>
+            <input type="number" class="form-control" id="WeightPer100Sqft" name="WeightPer100Sqft" required>
+        </div>
+
+        <button type="submit" class="btn btn-create-organisation">Create Product</button>
+    </form>
+}
+else
+{
+    <h2>Product @Model.Name Created Successfully</h2>
+    <br />
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Organisation Name:</td>
+                <td>@Model.OrgName</td>
+            </tr>
+            <tr>
+                <td>Product CostPerUnit:</td>
+                <td>@Model.CostPerUnit</td>
+            </tr>
+            <tr>
+                <td>Product WeightPerUnit:</td>
+                <td>@Model.WeightPerUnit</td>
+            </tr>
+            <tr>
+                <td>Product CostPer100Sqft:</td>
+                <td>@Model.CostPer100Sqft</td>
+            </tr>
+            <tr>
+                <td>Product WeightPer100Sqft:</td>
+                <td>@Model.WeightPer100Sqft</td>
+            </tr>
+            <tr>
+                <td>Creation Date:</td>
+                <td>@Model.CreationDate</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Product" asp-action="ListProducts" class="btn btn-create-organisation">View Products</a>
+    <a asp-controller="Product" asp-action="Create" class="btn btn-create-organisation">Create Another Product</a>
+}
+
+@section styles {
+
+
+}
+

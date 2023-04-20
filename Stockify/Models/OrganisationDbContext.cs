@@ -27,6 +27,11 @@ namespace Stockify.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Type)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Location)
                     .IsRequired()
                     .HasMaxLength(100)
@@ -44,7 +49,6 @@ namespace Stockify.Models
 
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("date");
-                    //.HasDefaultValueSql("(getdate())");
             });
         }
     }

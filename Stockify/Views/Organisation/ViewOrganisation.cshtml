@@ -5,8 +5,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th align="left">Name</th>
+            <th align="left">Type</th>
             <th align="left">Location</th>
             <th align="left">Email</th>
             <th align="left">Phone</th>
@@ -18,14 +18,14 @@
         @foreach (var organisation in @Model.OrganisationList)
         {
             <tr>
-                <td>@organisation.OrgId</td>
                 <td align="left">@organisation.Name</td>
+                <td align="left">@organisation.Type</td>
                 <td align="left">@organisation.Location</td>
                 <td align="left">@organisation.Email</td>
                 <td align="left">@organisation.Phone</td>
                 <td align="left">@organisation.CreationDate</td>
                 <td align="left">
-                    <a asp-controller="Organisation" asp-action="Dashboard" asp-route-id="@organisation.OrgId" class="btn btn-dashboard">Dashboard</a>
+                    <a asp-controller="Organisation" asp-action="InitDashboard" asp-route-id="@organisation.OrgId" class="btn btn-dashboard">Dashboard</a>
                 </td>
             </tr>
         }

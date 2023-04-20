@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @*<title>Stockify</title>*@
-    @if (ViewContext.RouteData.Values["action"].ToString() != "Dashboard")
+
+    @if (ViewContext.RouteData.Values["action"].ToString() != "InitDashboard")
     {
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     }
 
     <link rel="stylesheet" href="~/css/style.css" />
+
 
 
     <!--
@@ -69,19 +71,19 @@
                             </a>
                         </li>
 
-                        <li>
+                        @*<li>
                             <a class="navbar-link icon-box" asp-area="" asp-controller="Home" asp-action="Index">
                                 <span class="material-symbols-rounded  icon">bar_chart</span>
 
                                 <span>Track Inventory</span>
                             </a>
-                        </li>
+                        </li>*@
 
                         <li>
                             <a class="navbar-link icon-box" asp-area="" asp-controller="Home" asp-action="Index">
                                 <span class="material-symbols-rounded  icon">bar_chart</span>
 
-                                <span>Get Reports</span>
+                                <span>Get Report</span>
                             </a>
                         </li>
 
@@ -128,7 +130,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - Stockify - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - Stockify <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

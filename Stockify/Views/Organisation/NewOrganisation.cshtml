@@ -10,6 +10,19 @@
         </div>
 
         <div class="form-group">
+            <label for="Type">Organisation Type:</label>
+
+            <select class="form-control" id="Type" name="Type" required>
+                <option value="">--Select Organisation Type--</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Fabrication">Fabrication</option>
+                <option value="Wholesale">Wholesale</option>
+                <option value="Retail">Retail</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="Location">Location:</label>
             <input type="text" class="form-control" id="Location" name="Location" required>
         </div>
@@ -36,6 +49,10 @@ else
             <tr>
                 <td>Organisation ID:</td>
                 <td>@Model.OrgId</td>
+            </tr>
+            <tr>
+                <td>Organisation Type:</td>
+                <td>@Model.Type</td>
             </tr>
             <tr>
                 <td>Location:</td>

@@ -33,29 +33,30 @@
                 <ul class="ctx-menu">
 
                     <li class="ctx-item">
-                        <button class="ctx-menu-btn icon-box">
+                         
+                        <a asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId" class="ctx-menu-btn icon-box">
                             <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
 
                             <span class="ctx-menu-text">Edit</span>
-                        </button>
+                        </a>
                     </li>
 
                     <li class="ctx-item">
-                        <button class="ctx-menu-btn icon-box">
+                        <a asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId" class="ctx-menu-btn icon-box">
                             <span class="material-symbols-rounded  icon" aria-hidden="true">cached</span>
 
                             <span class="ctx-menu-text">Help</span>
-                        </button>
+                        </a>
                     </li>
 
                     <li class="divider"></li>
 
                     <li class="ctx-item">
-                        <button class="ctx-menu-btn red icon-box">
+                        <a asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId" class="ctx-menu-btn red icon-box">
                             <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
 
                             <span class="ctx-menu-text">Delete</span>
-                        </button>
+                        </a>
                     </li>
 
                 </ul>
@@ -67,9 +68,9 @@
                     </figure>
 
                     <div>
-                        <p class="card-title">Organisation Name</p>
+                        <p class="card-title">@Model.Name</p>
 
-                        <p class="card-subtitle">Organisation Description</p>
+                        <p class="card-subtitle">@Model.Type</p>
                     </div>
 
                 </div>
@@ -77,18 +78,18 @@
                 <ul class="contact-list">
 
                     <li>
-                        <a href="mailto:xyz@mail.com" class="contact-link icon-box">
+                        <a href="#" class="contact-link icon-box">
                             <span class="material-symbols-rounded  icon">mail</span>
 
-                            <p class="text">xyz@mail.com</p>
+                            <p class="text">@Model.Email</p>
                         </a>
                     </li>
 
                     <li>
-                        <a href="tel:00123456789" class="contact-link icon-box">
+                        <a href="#" class="contact-link icon-box">
                             <span class="material-symbols-rounded  icon">call</span>
 
-                            <p class="text">+00 123-456-789</p>
+                            <p class="text">@Model.Phone</p>
                         </a>
                     </li>
 
@@ -100,21 +101,25 @@
 
                     <li class="revenue-item icon-box">
 
-                        <button class="btn btn-dashing" data-load-more>
-                            <span class="spiner"></span>
-
-                            <span>New Job Work</span>
-                        </button>
+                        <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>New Job Work</span></a>
 
                     </li>
 
                     <li class="revenue-item icon-box">
 
-                        <button class="btn btn-dashing" data-load-more>
-                            <span class="spiner"></span>
+                        <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>View My Job Works</span></a>
+                        
+                    </li>
 
-                            <span>View Job Works</span>
-                        </button>
+                </ul>
+
+                <div class="divider card-divider"></div>
+
+                <ul class="revenue-list">
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Organisation Analytics</span></a>
 
                     </li>
 
@@ -133,7 +138,7 @@
                     <div>
                         <data class="card-data" value="21">21</data>
 
-                        <p class="card-text">Job Works Completed</p>
+                        <p class="card-text">Job Works Completed in 2023</p>
                     </div>
 
                 </div>
@@ -147,7 +152,7 @@
                     <div>
                         <data class="card-data" value="21">21</data>
 
-                        <p class="card-text">Job Works Inprogress</p>
+                        <p class="card-text">Job Works Inprogress in 2023</p>
                     </div>
 
                 </div>
@@ -163,22 +168,18 @@
                 <ul class="ctx-menu">
 
                     <li class="ctx-item">
-                        <button class="ctx-menu-btn icon-box">
+                        <a asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId" class="ctx-menu-btn icon-box">
                             <span class="material-symbols-rounded  icon" aria-hidden="true">cached</span>
 
                             <span class="ctx-menu-text">Help</span>
-                        </button>
+                        </a>
                     </li>
 
                 </ul>
 
                 <p class="card-title">Inventory</p>
 
-                <button class="btn btn-dashing" data-load-more>
-                    <span class="spiner"></span>
-
-                    <span>Track Inventory</span>
-                </button>
+                    <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Track Inventory</span></a>
 
                 <div class="divider card-divider"></div>
 
@@ -188,21 +189,17 @@
 
                     <li class="revenue-item icon-box">
 
-                        <button class="btn btn-dashing" data-load-more>
-                            <span class="spiner"></span>
-
-                            <span>Create Product</span>
-                        </button>
+                        @*<button class="btn btn-dashing" data-load-more>*@
+                            @*<span class="spiner"></span> (for the spinner icon)*@
+                            <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Create Product</span></a>
+                            
+                        @*</button>*@
 
                     </li>
 
                     <li class="revenue-item icon-box">
 
-                        <button class="btn btn-dashing" data-load-more>
-                            <span class="spiner"></span>
-
-                            <span>List Products</span>
-                        </button>
+                            <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>List Products</span></a>
 
                     </li>
 
@@ -216,21 +213,13 @@
 
                     <li class="revenue-item icon-box">
 
-                        <button class="btn btn-dashing" data-load-more>
-                            <span class="spiner"></span>
-
-                            <span>New Load</span>
-                        </button>
+                            <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>New Load</span></a>
 
                     </li>
 
                     <li class="revenue-item icon-box">
 
-                        <button class="btn btn-dashing" data-load-more>
-                            <span class="spiner"></span>
-
-                            <span>View Loads</span>
-                        </button>
+                            <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>View Loads</span></a>
 
                     </li>
 

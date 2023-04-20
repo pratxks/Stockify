@@ -13,6 +13,9 @@ namespace Stockify.Models
         [Required(ErrorMessage = "The organization name is required.")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "The organization type is required.")]
+        public string Type { get; set; }
+
         [Required(ErrorMessage = "The organization location is required.")]
         public string Location { get; set; }
 
