@@ -15,23 +15,23 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var organisation in @Model.LoadList)
+        @foreach (var load in @Model.LoadList)
         {
             <tr>
-                <td align="left">@organisation.Name</td>
-                <td align="left">@organisation.OrgId</td>
-                <td align="left">@organisation.CreationDate</td>
+                <td align="left">@load.Name</td>
+                <td align="left">@load.OrgId</td>
+                <td align="left">@load.CreationDate</td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="InitDashboard" asp-route-id="@organisation.OrgId" class="btn btn-dashboard">Add Entry</a>
+                    <a asp-controller="Load" asp-action="InitLoadEntry" asp-route-id="@load.LoadId" class="btn btn-dashboard">Add Entry</a>
                 </td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="InitDashboard" asp-route-id="@organisation.OrgId" class="btn btn-dashboard">View Entries</a>
+                    <a asp-controller="Load" asp-action="InitDashboard" asp-route-id="#" class="btn btn-dashboard">View Entries</a>
                 </td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="Edit"  class="btn btn-primary">Edit</a>
+                    <a asp-controller="Load" asp-action="Edit" class="btn btn-primary">Edit</a>
                 </td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="Delete"  class="btn btn-danger" onclick="return confirm('Are you sure want to delete this Load? Action cannot be restored');">Delete</a>
+                    <a asp-controller="Load" asp-action="Delete" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this Load? Action cannot be restored');">Delete</a>
                 </td>
             </tr>
         }

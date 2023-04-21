@@ -11,7 +11,7 @@ using Stockify.Models;
 namespace Stockify.Migrations
 {
     [DbContext(typeof(OrganisationDbContext))]
-    [Migration("20230420063600_OrganisationMigration")]
+    [Migration("20230421071901_OrganisationMigration")]
     partial class OrganisationMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -17,19 +17,26 @@ namespace Stockify.Models
             [Required(ErrorMessage = "The product name is required.")]
             public string Name { get; set; }
 
-            [Required(ErrorMessage = "The product CostPerUnitWeight is required.")]
+            [Required(ErrorMessage = "The product type is required.")]
+            public string Type { get; set; }
+
+            //[Required(ErrorMessage = "The product CostPerUnitWeight is required.")]
+            [Range(0, double.MaxValue, ErrorMessage = "The cost price must be greater than or equal to 0.")]
+            public decimal? CostPerUnitWeight { get; set; }
+
+            //[Required(ErrorMessage = "The product CostPerUnit is required.")]
             [Range(0, double.MaxValue, ErrorMessage = "The cost price must be greater than or equal to 0.")]
             public decimal? CostPerUnit { get; set; }
 
-            [Required(ErrorMessage = "The product WeightPerUnit is required.")]
+            //[Required(ErrorMessage = "The product WeightPerUnit is required.")]
             [Range(0, double.MaxValue, ErrorMessage = "The weight must be greater than or equal to 0.")]
             public decimal? WeightPerUnit { get; set; }
 
-            [Required(ErrorMessage = "The product CostPer100Sqft is required.")]
+            //[Required(ErrorMessage = "The product CostPer100Sqft is required.")]
             [Range(0, double.MaxValue, ErrorMessage = "The cost price must be greater than or equal to 0.")]
             public decimal? CostPer100Sqft { get; set; }
 
-            [Required(ErrorMessage = "The product WeightPer100Sqft is required.")]
+            //[Required(ErrorMessage = "The product WeightPer100Sqft is required.")]
             [Range(0, double.MaxValue, ErrorMessage = "The weight must be greater than or equal to 0.")]
             public decimal? WeightPer100Sqft { get; set; }
 
@@ -45,8 +52,7 @@ namespace Stockify.Models
                 // Set creation date to current date and time
                 CreationDate = DateTime.Now;
             }
-        }
-
     }
+}
 
 

@@ -28,13 +28,16 @@ namespace Stockify.Migrations.ProductDb
                         .HasColumnName("ProductId");
 
                     b.Property<decimal?>("CostPer100Sqft")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .IsUnicode(false)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("CostPerUnit")
-                        .IsRequired()
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("CostPerUnitWeight")
                         .HasMaxLength(20)
                         .IsUnicode(false)
                         .HasColumnType("decimal(18,2)");
@@ -54,14 +57,18 @@ namespace Stockify.Migrations.ProductDb
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<decimal?>("WeightPer100Sqft")
+                    b.Property<string>("Type")
                         .IsRequired()
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<decimal?>("WeightPer100Sqft")
                         .HasMaxLength(20)
                         .IsUnicode(false)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("WeightPerUnit")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .IsUnicode(false)
                         .HasColumnType("decimal(18,2)");

@@ -59,11 +59,18 @@ namespace Stockify.Controllers
                 var product = new Product
                 {
                     Name = viewModel.Name,
+                    Type = viewModel.ProductType,
                     OrgId = viewModel.ProductOrgId,
-                    CostPerUnit = Math.Round(viewModel.CostPerUnit, 2),
-                    WeightPerUnit = Math.Round(viewModel.WeightPerUnit, 2),
-                    CostPer100Sqft = Math.Round(viewModel.CostPer100Sqft, 2),
-                    WeightPer100Sqft = Math.Round(viewModel.WeightPer100Sqft, 2)
+                    CostPerUnitWeight = viewModel.CostPerUnitWeight,
+                    CostPerUnit = viewModel.CostPerUnit,
+                    WeightPerUnit = viewModel.WeightPerUnit,
+                    CostPer100Sqft = viewModel.CostPer100Sqft,
+                    WeightPer100Sqft = viewModel.WeightPer100Sqft
+                    //CostPerUnitWeight = viewModel.CostPerUnitWeightHidden,
+                    //CostPerUnit = viewModel.CostPerUnitHidden,
+                    //WeightPerUnit = viewModel.WeightPerUnitHidden,
+                    //CostPer100Sqft = viewModel.CostPer100SqftHidden,
+                    //WeightPer100Sqft = viewModel.WeightPer100SqftHidden
                 };
 
                 _pcontext.Add(product);

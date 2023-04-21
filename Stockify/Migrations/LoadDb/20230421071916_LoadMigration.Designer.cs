@@ -11,7 +11,7 @@ using Stockify.Models;
 namespace Stockify.Migrations.LoadDb
 {
     [DbContext(typeof(LoadDbContext))]
-    [Migration("20230420070907_LoadMigration")]
+    [Migration("20230421071916_LoadMigration")]
     partial class LoadMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

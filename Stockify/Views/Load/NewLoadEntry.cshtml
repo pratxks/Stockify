@@ -1,6 +1,91 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model LoadEntryViewModel
+
+@if (ViewBag.NewLoadEntry == true)
+{
+    <h2>Create a new Load Entry for Model.LoadName</h2>
+    <form asp-controller="Load" asp-action="NewLoadEntry" method="post">
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="LoadId" name="LoadId" value="@Model.LoadId">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="LoadOrgId" name="LoadOrgId" value="@Model.LoadOrgId">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="OrgName" name="OrgName" value="@Model.OrgName">
+        </div>
+
+        <div class="form-group">
+            <label for="LoadEntryProduct">Product:</label>
+
+            <select class="form-control" id="LoadEntryProduct" name="LoadEntryProduct" required>
+                <option value="">--Select Product-</option>
+                @foreach (var product in Model.ProductList)
+                {
+                    <option value="@product.ProductId">@product.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Width">Width:</label>
+            <input type="number" class="form-control" id="Width" name="Width" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Height">Height:</label>
+            <input type="number" class="form-control" id="Height" name="Height" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Weight">Weight:</label>
+            <input type="number" class="form-control" id="Weight" name="Weight" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Quantity">Quantity:</label>
+            <input type="number" class="form-control" id="Quantity" name="Quantity" required>
+        </div>
+
+        <button type="submit" class="btn btn-create-organisation">Proceed</button>
+    </form>
+}
+else
+{
+    <h2>Load Entry in @Model.LoadName Created Successfully</h2>
+    <br />
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Organisation Name:</td>
+                <td>@Model.OrgName</td>
+            </tr>
+            <tr>
+                <td>Product:</td>
+                <td>@Model.OrgName</td>
+            </tr>
+            <tr>
+                <td>Organisation Name:</td>
+                <td>@Model.OrgName</td>
+            </tr>
+            <tr>
+                <td>Organisation Name:</td>
+                <td>@Model.OrgName</td>
+            </tr>
+            <tr>
+                <td>Creation Date:</td>
+                <td>@Model.CreationDate</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Load" asp-action="LoadEntry" asp-route-id="@Model.LoadId" class="btn btn-create-organisation">Add Load Entry</a>
+    <a asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.LoadId" class="btn btn-create-organisation">View Loads</a>
+}
+
+@section styles {
+
+
 }
 

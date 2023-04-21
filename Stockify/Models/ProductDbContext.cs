@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using static Stockify.Models.Product;
 
 namespace Stockify.Models
 {
@@ -33,26 +34,32 @@ namespace Stockify.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.CostPerUnit)
+                entity.Property(e => e.Type)
                     .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CostPerUnitWeight)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
+
+                entity.Property(e => e.CostPerUnit)
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.WeightPerUnit)
-                    .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.CostPer100Sqft)
-                    .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.WeightPer100Sqft)
-                    .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnType("decimal(18,2)");
