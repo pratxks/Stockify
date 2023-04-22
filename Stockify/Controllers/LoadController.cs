@@ -61,7 +61,9 @@ namespace Stockify.Controllers
                 {
                     LoadId = viewModel.LoadId,
                     Name = viewModel.Name,
-                    OrgId = viewModel.LoadOrgId
+                    OrgId = viewModel.LoadOrgId,
+                    LoadGroup = viewModel.LoadGroup,
+                    VehicleNo = viewModel.VehicleNo
                 };
 
                 _lcontext.Add(load);

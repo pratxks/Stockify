@@ -22,6 +22,10 @@ namespace Stockify.Migrations.LoadDb
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    LoadGroup = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    VehicleNo = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CreationDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>

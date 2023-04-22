@@ -1,12 +1,15 @@
 ﻿@model LoadListViewModel
-
-<h2>Loads</h2>
+<br />
+<br />
+<h2>My Organisations</h2>
 <br />
 <table class="table">
     <thead>
         <tr>
-            <th align="left">Name/ID</th>
+            <th align="left">Name/ID</th>   @*different from system generated load ID*@
             <th align="left">Organisation</th>
+            <th align="left">Load Group</th>
+            <th align="left">Vehicle Number</th>
             <th align="left">Date Created</th>
             <th align="left"></th>
             <th align="left"></th>
@@ -19,19 +22,21 @@
         {
             <tr>
                 <td align="left">@load.Name</td>
-                <td align="left">@load.OrgId</td>
+                <td align="left">@Model.OrgName</td>
+                <td align="left">@load.LoadGroup</td>
+                <td align="left">@load.VehicleNo</td>
                 <td align="left">@load.CreationDate</td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="InitLoadEntry" asp-route-id="@load.LoadId" class="btn btn-dashboard">Add Entry</a>
+                    <a asp-controller="Organisation" asp-action="InitDashboard" asp-route-id="@load.LoadId" class="btn btn-dashboard">Add Entry</a>
                 </td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="InitDashboard" asp-route-id="#" class="btn btn-dashboard">View Entries</a>
+                    <a asp-controller="Organisation" asp-action="InitDashboard" asp-route-id="@load.LoadId" class="btn btn-dashboard">View Entries</a>
                 </td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="Edit" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Organisation" asp-action="InitDashboard" asp-route-id="@load.LoadId" class="btn btn-dashboard">Edit</a>
                 </td>
                 <td align="left">
-                    <a asp-controller="Load" asp-action="Delete" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this Load? Action cannot be restored');">Delete</a>
+                    <a asp-controller="Organisation" asp-action="InitDashboard" asp-route-id="@load.LoadId" class="btn btn-dashboard">Delete</a>
                 </td>
             </tr>
         }

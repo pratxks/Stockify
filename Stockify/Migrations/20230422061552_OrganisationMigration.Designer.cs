@@ -8,11 +8,11 @@ using Stockify.Models;
 
 #nullable disable
 
-namespace Stockify.Migrations.LoadDb
+namespace Stockify.Migrations
 {
-    [DbContext(typeof(LoadDbContext))]
-    [Migration("20230421071916_LoadMigration")]
-    partial class LoadMigration
+    [DbContext(typeof(OrganisationDbContext))]
+    [Migration("20230422061552_OrganisationMigration")]
+    partial class OrganisationMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,16 +21,28 @@ namespace Stockify.Migrations.LoadDb
                 .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Stockify.Models.Load", b =>
+            modelBuilder.Entity("Stockify.Models.Organisation", b =>
                 {
-                    b.Property<string>("LoadId")
+                    b.Property<string>("OrgId")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("LoadId");
+                        .HasColumnName("OrgId");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -38,15 +50,21 @@ namespace Stockify.Migrations.LoadDb
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("OrgId")
+                    b.Property<string>("Phone")
                         .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(20)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(20)");
 
-                    b.HasKey("LoadId");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
 
-                    b.ToTable("Loads", (string)null);
+                    b.HasKey("OrgId");
+
+                    b.ToTable("Organisations", (string)null);
                 });
 #pragma warning restore 612, 618
         }

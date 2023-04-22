@@ -2,26 +2,28 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stockify.Models;
 
 #nullable disable
 
-namespace Stockify.Migrations.LoadDb
+namespace Stockify.Migrations.LoadEntryDb
 {
-    [DbContext(typeof(LoadDbContext))]
-    partial class LoadDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(LoadEntryDbContext))]
+    [Migration("20230422102727_LoadEntryMigration")]
+    partial class LoadEntryMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Stockify.Models.Load", b =>
+            modelBuilder.Entity("Stockify.Models.LoadEntry", b =>
                 {
-                    b.Property<string>("LoadId")
+                    b.Property<string>("LoadEntryId")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
@@ -30,17 +32,17 @@ namespace Stockify.Migrations.LoadDb
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("LoadGroup")
-                        .IsRequired()
+                    b.Property<decimal?>("Height")
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("LoadId")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("LoadId1");
 
                     b.Property<string>("OrgId")
                         .IsRequired()
@@ -48,15 +50,30 @@ namespace Stockify.Migrations.LoadDb
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("VehicleNo")
+                    b.Property<string>("ProductId")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
 
-                    b.HasKey("LoadId");
+                    b.Property<decimal?>("Quantity")
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("decimal(65,30)");
 
-                    b.ToTable("Loads", (string)null);
+                    b.Property<decimal?>("Weight")
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal?>("Width")
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("LoadEntryId");
+
+                    b.ToTable("Load Entries", (string)null);
                 });
 #pragma warning restore 612, 618
         }

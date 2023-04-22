@@ -1,0 +1,89 @@
+﻿@model LoadViewModel
+<br />
+<br />
+@if (ViewBag.NewLoad == true)
+{
+    <h2>Create a Job Work</h2>
+    <form asp-controller="Load" asp-action="NewLoad" method="post">
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="LoadId" name="LoadId" value="@Model.LoadId">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="LoadOrgId" name="LoadOrgId" value="@Model.LoadOrgId">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="OrgName" name="OrgName" value="@Model.OrgName">
+        </div>
+
+        <div class="form-group">
+            <label for="Name">JobWork Name/ID:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="ProductType">Load Group:</label>
+            <select class="form-control" id="userId" name="userId" required>
+                <option value="">--Select Load Group (Choose a load to associate this job work with)--</option>
+                <option value="ByQuantity">Apply All Load Groups</option>
+                @*@foreach (var loadgroup in Model.LoadGroup)
+                {
+                    <option value="@load.UserId">@budget.UserId</option>
+                }*@
+            </select>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <h3>Enter Customer Details</h3>
+        <div class="form-group">
+            <label for="Name">Customer Name:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Name">Customer Address:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Name">Customer GSTIN:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Name">Customer PAN:</label>
+            <input type="text" class="form-control" id="Name" name="Name" required>
+        </div>
+
+        <button type="submit" class="btn btn-create-organisation">Proceed</button>
+    </form>
+}
+else
+{
+    <br />
+    <br />
+    <h2>Load @Model.Name Created Successfully</h2>
+    <br />
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Organisation Name:</td>
+                <td>@Model.OrgName</td>
+            </tr>
+            <tr>
+                <td>Creation Date:</td>
+                <td>@Model.CreationDate</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Load" asp-action="LoadEntry" asp-route-id="@Model.LoadId" class="btn btn-create-organisation">Add Load Entry</a>
+    <a asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.LoadId" class="btn btn-create-organisation">View Loads</a>
+}
+
+@section styles {
+
+
+}
+

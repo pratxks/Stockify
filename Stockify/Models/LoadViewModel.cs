@@ -7,6 +7,8 @@ namespace Stockify.Models
         public string LoadOrgId { get; set; }
         public string OrgName { get; set; }
         public string Name { get; set; }
+        public string LoadGroup { get; set; }
+        public string VehicleNo { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

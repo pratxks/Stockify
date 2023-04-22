@@ -6,11 +6,18 @@ namespace Stockify.Models
         public string LoadId { get; set; }
         public string LoadName { get; set; }
         public string LoadOrgId { get; set; }
-        public string OrgName { get; set; }
-        public string LoadEntryProduct { get; set; }
-        public decimal Dimension { get; set; }
-        public int Quantity { get; set; }
-        public List<Product> ProductList { get; set; }
+        public string LoadOrgName { get; set; }
+        public string LoadGroup { get; set; }
+        public string LoadEntryProductId { get; set; }
+        public string LoadEntryProductName { get; set; }
+        public string LoadEntryProductType { get; set; }
+
+        public decimal? Weight { get; set; }
+        public decimal? Quantity { get; set; }
+        public decimal? Height { get; set; }
+        public decimal? Width { get; set; }
+
+        public List<Product>? ProductList { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

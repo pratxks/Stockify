@@ -17,6 +17,12 @@ namespace Stockify.Models
         [Required(ErrorMessage = "The product name is required.")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "The Load Group is required.")]
+        public string LoadGroup { get; set; }
+
+        [Required(ErrorMessage = "The VehicleNo is required.")]
+        public string VehicleNo { get; set; }
+
         [Required(ErrorMessage = "The product creation date is required.")]
         [DataType(DataType.Date, ErrorMessage = "Invalid date format.")]
         public DateTime CreationDate { get; set; }

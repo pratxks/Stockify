@@ -1,5 +1,6 @@
 ﻿@model ProductViewModel
-
+<br />
+<br />
 @if (ViewBag.NewProduct == true)
 {
     <h2>Create a new Product</h2>
@@ -22,50 +23,50 @@
             <label for="ProductType">Product Type:</label>
             <select asp-for="ProductType" class="form-control" required>
                 <option value="">--Select Product Type-</option>
-                <option value="ByQuantity">measured by quantity</option>
-                <option value="ByWeight">measured by weight</option>
-                <option value="ByDimension">measured by dimensions</option>
+                <option value="ByQuantity">Priced by Quantity</option>
+                <option value="ByWeight">Priced by Weight</option>
+                <option value="ByDimension">Priced by Dimensions</option>
             </select>
             <span asp-validation-for="ProductType" class="text-danger"></span>
         </div>
 
         <div class="form-group" asp-if="@Model.ProductType == " ByWeight"">
-            <label for="CostPerUnitWeight">CostPerUnitWeight:</label>
-            <input asp-for="CostPerUnitWeight" class="form-control" value="">
+            <label for="CostPerUnitWeight">Cost Per KG:</label>
+            <input asp-for="CostPerUnitWeight" class="form-control" value="" pattern="^\d+(\.\d{1,2})?$" title="Please enter a number with up to 2 decimal places">
             <span asp-validation-for="CostPerUnitWeight" class="text-danger"></span>
         </div>
 
         <div class="form-group" asp-if="@Model.ProductType == " ByQuantity"">
-            <label for="CostPerUnit">CostPerUnit:</label>
-            <input asp-for="CostPerUnit" class="form-control" value="">
+            <label for="CostPerUnit">Cost Per Item (INR):</label>
+            <input asp-for="CostPerUnit" class="form-control" value="" pattern="^\d+(\.\d{1,2})?$" title="Please enter a number with up to 2 decimal places">
             <span asp-validation-for="CostPerUnit" class="text-danger"></span>
         </div>
 
         <div class="form-group" asp-if="@Model.ProductType == " ByQuantity"">
-            <label for="WeightPerUnit">WeightPerUnit:</label>
-            <input asp-for="WeightPerUnit" class="form-control" value="">
+            <label for="WeightPerUnit">Weight Per Item (KGs)- If Applicable:</label>
+            <input asp-for="WeightPerUnit" class="form-control" value="" pattern="^\d+(\.\d{1,2})?$" title="Please enter a number with up to 2 decimal places">
             <span asp-validation-for="WeightPerUnit" class="text-danger"></span>
         </div>
 
         <div class="form-group" asp-if="@Model.ProductType == " ByDimension"">
-            <label for="CostPer100Sqft">CostPer100Sqft:</label>
-            <input asp-for="CostPer100Sqft" class="form-control" value="">
+            <label for="CostPer100Sqft">CostPerSqft:</label>
+            <input asp-for="CostPer100Sqft" class="form-control" value="" pattern="^\d+(\.\d{1,2})?$" title="Please enter a number with up to 2 decimal places">
             <span asp-validation-for="CostPer100Sqft" class="text-danger"></span>
         </div>
 
         <div class="form-group" asp-if="@Model.ProductType == " ByDimension"">
-            <label for="WeightPer100Sqft">WeightPer100Sqft:</label>
-            <input asp-for="WeightPer100Sqft" class="form-control" value="">
+            <label for="WeightPer100Sqft">WeightPerSqft- If Applicable:</label>
+            <input asp-for="WeightPer100Sqft" class="form-control" value="" pattern="^\d+(\.\d{1,2})?$" title="Please enter a number with up to 2 decimal places">
             <span asp-validation-for="WeightPer100Sqft" class="text-danger"></span>
         </div>
-
-
 
         <button type="submit" class="btn btn-create-organisation">Create Product</button>
     </form>
 }
 else
 {
+    <br />
+    <br />
     <h2>Product @Model.Name Created Successfully</h2>
     <br />
     <table class="table">
@@ -107,7 +108,7 @@ else
                 <td>Creation Date:</td>
                 <td>@Model.CreationDate</td>
             </tr>
-            </tbody>
+        </tbody>
     </table>
 
     <a asp-controller="Product" asp-action="ListProducts" asp-route-id="@Model.ProductOrgId" class="btn btn-create-organisation">View Products</a>
@@ -116,150 +117,106 @@ else
 
 @section scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(function () {
-            $('form').submit(function () {
-                // Update the hidden input fields with the corresponding input values
-                $('#CostPerUnitHidden').val($('#CostPerUnit').val());
-                $('#WeightPerUnitHidden').val($('#WeightPerUnit').val());
-                $('#CostPerUnitWeightHidden').val($('#CostPerUnitWeight').val());
-                $('#CostPer100SqftHidden').val($('#CostPer100Sqft').val());
-                $('#WeightPer100SqftHidden').val($('#WeightPer100Sqft').val());
-            });
-        });
-    </script>
+
     <script>$(document).ready(function () {
             // Hide all input fields and set hidden input values to 0 by default
-                $("#CostPerUnit").hide();
-                $("#WeightPerUnit").hide();
-                $("#CostPerUnitWeight").hide();
-                $("#CostPer100Sqft").hide();
-                $("#WeightPer100Sqft").hide();
-                $("#CostPerUnit").prop("required", true);
-                $("#WeightPerUnit").prop("required", true);
-                $("#CostPerUnitWeight").prop("required", true);
-                $("#CostPer100Sqft").prop("required", true);
-                $("#WeightPer100Sqft").prop("required", true);
+            $("#CostPerUnit").hide();
+            $("#WeightPerUnit").hide();
+            $("#CostPerUnitWeight").hide();
+            $("#CostPer100Sqft").hide();
+            $("#WeightPer100Sqft").hide();
+            $("#CostPerUnit").prop("required", true);
+            $("#WeightPerUnit").prop("required", true);
+            $("#CostPerUnitWeight").prop("required", true);
+            $("#CostPer100Sqft").prop("required", true);
+            $("#WeightPer100Sqft").prop("required", true);
 
-                const costPerUnitWeightLabel = document.querySelector('label[for="CostPerUnitWeight"]');
-                const costPerUnitLabel = document.querySelector('label[for="CostPerUnit"]');
-                const WeightPerUnitLabel = document.querySelector('label[for="WeightPerUnit"]');
-                const CostPer100SqftLabel = document.querySelector('label[for="CostPer100Sqft"]');
-                const WeightPer100SqftLabel = document.querySelector('label[for="WeightPer100Sqft"]');
+            const costPerUnitWeightLabel = document.querySelector('label[for="CostPerUnitWeight"]');
+            const costPerUnitLabel = document.querySelector('label[for="CostPerUnit"]');
+            const WeightPerUnitLabel = document.querySelector('label[for="WeightPerUnit"]');
+            const CostPer100SqftLabel = document.querySelector('label[for="CostPer100Sqft"]');
+            const WeightPer100SqftLabel = document.querySelector('label[for="WeightPer100Sqft"]');
 
-                costPerUnitWeightLabel.style.display = "none";
-                costPerUnitLabel.style.display = "none";
-                WeightPerUnitLabel.style.display = "none";
-                CostPer100SqftLabel.style.display = "none";
-                WeightPer100SqftLabel.style.display = "none";
+            costPerUnitWeightLabel.style.display = "none";
+            costPerUnitLabel.style.display = "none";
+            WeightPerUnitLabel.style.display = "none";
+            CostPer100SqftLabel.style.display = "none";
+            WeightPer100SqftLabel.style.display = "none";
 
-                // Show relevant input fields based on user's selection
-                $("#ProductType").change(function () {
+            // Show relevant input fields based on user's selection
+            $("#ProductType").change(function () {
 
-                    var selectedOption = $(this).children("option:selected").val();
+                var selectedOption = $(this).children("option:selected").val();
 
-                    switch (selectedOption) {
+                switch (selectedOption) {
 
-                        case "ByQuantity":
+                    case "ByQuantity":
 
-                            $("#CostPerUnit").show();
-                            $("#WeightPerUnit").show();
-                            $("#CostPerUnitWeight").hide();
-                            $("#CostPer100Sqft").hide();
-                            $("#WeightPer100Sqft").hide();
+                        $("#CostPerUnit").show();
+                        $("#WeightPerUnit").show();
+                        $("#CostPerUnitWeight").hide();
+                        $("#CostPer100Sqft").hide();
+                        $("#WeightPer100Sqft").hide();
 
-                            $("#CostPerUnit").prop("required", true);
-                            $("#WeightPerUnit").prop("required", true);
-                            $("#CostPerUnitWeight").prop("required", false);
-                            $("#CostPer100Sqft").prop("required", false);
-                            $("#WeightPer100Sqft").prop("required", false);
+                        $("#CostPerUnit").prop("required", true);
+                        $("#WeightPerUnit").prop("required", true);
+                        $("#CostPerUnitWeight").prop("required", false);
+                        $("#CostPer100Sqft").prop("required", false);
+                        $("#WeightPer100Sqft").prop("required", false);
 
-                            //$("#CostPerUnit").val($("#CostPerUnit").val());
-                            //$("#WeightPerUnit").val($("#WeightPerUnit").val());
-                            //$("#CostPerUnitWeight").val(1);
-                            //$("#CostPer100Sqft").val(1);
-                            //$("#WeightPer100Sqft").val(1);
+                        costPerUnitWeightLabel.style.display = "none";
+                        costPerUnitLabel.style.display = "block";
+                        WeightPerUnitLabel.style.display = "block";
+                        CostPer100SqftLabel.style.display = "none";
+                        WeightPer100SqftLabel.style.display = "none";
+                        break;
 
-                            costPerUnitWeightLabel.style.display = "none";
-                            costPerUnitLabel.style.display = "block";
-                            WeightPerUnitLabel.style.display = "block";
-                            CostPer100SqftLabel.style.display = "none";
-                            WeightPer100SqftLabel.style.display = "none";
-                            break;
+                    case "ByWeight":
 
-                        case "ByWeight":
+                        $("#CostPerUnit").hide();
+                        $("#WeightPerUnit").hide();
+                        $("#CostPerUnitWeight").show();
+                        $("#CostPer100Sqft").hide();
+                        $("#WeightPer100Sqft").hide();
 
-                            $("#CostPerUnit").hide();
-                            $("#WeightPerUnit").hide();
-                            $("#CostPerUnitWeight").show();
-                            $("#CostPer100Sqft").hide();
-                            $("#WeightPer100Sqft").hide();
+                        $("#CostPerUnit").prop("required", false);
+                        $("#WeightPerUnit").prop("required", false);
+                        $("#CostPerUnitWeight").prop("required", true);
+                        $("#CostPer100Sqft").prop("required", false);
+                        $("#WeightPer100Sqft").prop("required", false);
 
-                            $("#CostPerUnit").prop("required", false);
-                            $("#WeightPerUnit").prop("required", false);
-                            $("#CostPerUnitWeight").prop("required", true);
-                            $("#CostPer100Sqft").prop("required", false);
-                            $("#WeightPer100Sqft").prop("required", false);
+                        costPerUnitWeightLabel.style.display = "block";
+                        costPerUnitLabel.style.display = "none";
+                        WeightPerUnitLabel.style.display = "none";
+                        CostPer100SqftLabel.style.display = "none";
+                        WeightPer100SqftLabel.style.display = "none";
+                        break;
 
-                            //$("#CostPerUnit").val(1);
-                            //$("#WeightPerUnit").val(1);
-                            //$("#CostPerUnitWeight").val($("#CostPerUnitWeight").val());
-                            //$("#CostPer100Sqft").val(1);
-                            //$("#WeightPer100Sqft").val(1);
+                    case "ByDimension":
 
-                            costPerUnitWeightLabel.style.display = "block";
-                            costPerUnitLabel.style.display = "none";
-                            WeightPerUnitLabel.style.display = "none";
-                            CostPer100SqftLabel.style.display = "none";
-                            WeightPer100SqftLabel.style.display = "none";
-                            break;
+                        $("#CostPerUnit").hide();
+                        $("#WeightPerUnit").hide();
+                        $("#CostPerUnitWeight").hide();
+                        $("#CostPer100Sqft").show();
+                        $("#WeightPer100Sqft").show();
 
-                        case "ByDimension":
+                        $("#CostPerUnit").prop("required", false);
+                        $("#WeightPerUnit").prop("required", false);
+                        $("#CostPerUnitWeight").prop("required", false);
+                        $("#CostPer100Sqft").prop("required", true);
+                        $("#WeightPer100Sqft").prop("required", true);
 
-                            $("#CostPerUnit").hide();
-                            $("#WeightPerUnit").hide();
-                            $("#CostPerUnitWeight").hide();
-                            $("#CostPer100Sqft").show();
-                            $("#WeightPer100Sqft").show();
+                        costPerUnitWeightLabel.style.display = "none";
+                        costPerUnitLabel.style.display = "none";
+                        WeightPerUnitLabel.style.display = "none";
+                        CostPer100SqftLabel.style.display = "block";
+                        WeightPer100SqftLabel.style.display = "block";
+                        break;
 
-                            $("#CostPerUnit").prop("required", false);
-                            $("#WeightPerUnit").prop("required", false);
-                            $("#CostPerUnitWeight").prop("required", false);
-                            $("#CostPer100Sqft").prop("required", true);
-                            $("#WeightPer100Sqft").prop("required", true);
+                }
+            });
+        });</script>
 
-                            //$("#CostPerUnit").val(1);
-                            //$("#WeightPerUnit").val(1);
-                            //$("#CostPerUnitWeight").val(1);
-                            //$("#CostPer100Sqft").val($("#CostPer100Sqft").val());
-                            //$("#WeightPer100Sqft").val($("#WeightPer100Sqft").val());
-
-                            costPerUnitWeightLabel.style.display = "none";
-                            costPerUnitLabel.style.display = "none";
-                            WeightPerUnitLabel.style.display = "none";
-                            CostPer100SqftLabel.style.display = "block";
-                            WeightPer100SqftLabel.style.display = "block";
-                            break;
-                        //default:
-                        //    $("#CostPerUnit").hide();
-                        //    $("#WeightPerUnit").hide();
-                        //    $("#CostPerUnitWeight").hide();
-                        //    $("#CostPer100Sqft").hide();
-                        //    $("#WeightPer100Sqft").hide();
-                        //    $("#CostPerUnit").prop("required", false);
-                        //    $("#WeightPerUnit").prop("required", false);
-                        //    $("#CostPerUnitWeight").prop("required", false);
-                        //    $("#CostPer100Sqft").prop("required", false);
-                        //    $("#WeightPer100Sqft").prop("required", false);
-                        //    costPerUnitWeightLabel.style.display = "none";
-                        //    costPerUnitLabel.style.display = "none";
-                        //    WeightPerUnitLabel.style.display = "none";
-                        //    CostPer100SqftLabel.style.display = "none";
-                        //    WeightPer100SqftLabel.style.display = "none";
-
-                        }
-                });
-            });</script>
 }
 
 

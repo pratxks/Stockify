@@ -3,43 +3,54 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Stockify.Models
 {
-    public class LoadDbContext : DbContext
+    public class LoadEntryDbContext : DbContext
     {
-        public LoadDbContext(DbContextOptions<LoadDbContext> options) : base(options)
+        public LoadEntryDbContext(DbContextOptions<LoadEntryDbContext> options) : base(options)
         {
         }
 
-        public DbSet<Load> Loads { get; set; }
+        public DbSet<LoadEntry> LoadEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Load>(entity =>
+            modelBuilder.Entity<LoadEntry>(entity =>
             {
-                entity.ToTable("Loads");
+                entity.ToTable("Load Entries");
 
-                entity.Property(e => e.LoadId)
+                entity.Property(e => e.LoadEntryId)
                     .HasColumnName("LoadId")
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
+
+                entity.Property(e => e.LoadId)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.OrgId)
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.ProductId)
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.LoadGroup)
-                    .IsRequired()
+                entity.Property(e => e.Weight)
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.VehicleNo)
-                    .IsRequired()
+                entity.Property(e => e.Quantity)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Height)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Width)
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
