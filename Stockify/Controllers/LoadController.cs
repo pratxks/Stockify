@@ -72,6 +72,27 @@ namespace Stockify.Controllers
 
             return View("NewLoad", viewModel);
         }
+
+        public async Task<IActionResult> ListLoads(string id)
+        {
+            var org = await _ocontext.Organisations.FindAsync(id);
+
+            if (org == null)
+            {
+                return NotFound();
+            }
+
+            List<Load> loads = _lcontext.Loads.Where(l => l.OrgId == id).ToList();
+
+            var model = new LoadListViewModel
+            {
+                OrgName = org.Name,
+                LoadList = loads
+            };
+
+            // bind products to view
+            return View("ViewLoads", model);
+        }
     }
 }
 

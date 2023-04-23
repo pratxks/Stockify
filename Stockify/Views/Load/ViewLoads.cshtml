@@ -1,13 +1,12 @@
 ﻿@model LoadListViewModel
 <br />
 <br />
-<h2>My Organisations</h2>
+<h2>Loads for @Model.OrgName</h2>
 <br />
 <table class="table">
     <thead>
         <tr>
-            <th align="left">Name/ID</th>   @*different from system generated load ID*@
-            <th align="left">Organisation</th>
+            <th align="left">Name/ID</th>  
             <th align="left">Load Group</th>
             <th align="left">Vehicle Number</th>
             <th align="left">Date Created</th>
@@ -22,7 +21,6 @@
         {
             <tr>
                 <td align="left">@load.Name</td>
-                <td align="left">@Model.OrgName</td>
                 <td align="left">@load.LoadGroup</td>
                 <td align="left">@load.VehicleNo</td>
                 <td align="left">@load.CreationDate</td>

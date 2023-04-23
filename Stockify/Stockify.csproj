@@ -20,6 +20,7 @@
     <None Remove="Views\Load\" />
     <None Remove="Views\JobWork\" />
     <None Remove="Views\Load Entry\" />
+    <None Remove="Views\JobWorkEntry\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="6.10.9" />
@@ -45,6 +46,7 @@
     <Folder Include="Views\Load\" />
     <Folder Include="Views\JobWork\" />
     <Folder Include="Views\LoadEntry\" />
+    <Folder Include="Views\JobWorkEntry\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
