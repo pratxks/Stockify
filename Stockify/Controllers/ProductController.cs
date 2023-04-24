@@ -66,12 +66,9 @@ namespace Stockify.Controllers
                     WeightPerUnit = viewModel.WeightPerUnit,
                     CostPer100Sqft = viewModel.CostPer100Sqft,
                     WeightPer100Sqft = viewModel.WeightPer100Sqft
-                    //CostPerUnitWeight = viewModel.CostPerUnitWeightHidden,
-                    //CostPerUnit = viewModel.CostPerUnitHidden,
-                    //WeightPerUnit = viewModel.WeightPerUnitHidden,
-                    //CostPer100Sqft = viewModel.CostPer100SqftHidden,
-                    //WeightPer100Sqft = viewModel.WeightPer100SqftHidden
                 };
+
+                viewModel.CreationDate = product.CreationDate;
 
                 _pcontext.Add(product);
                 await _pcontext.SaveChangesAsync();

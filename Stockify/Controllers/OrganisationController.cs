@@ -34,18 +34,6 @@ namespace Stockify.Controllers
             return View("Dashboard", organisation);
         }
 
-        //public async Task<IActionResult> ViewDashboard(string orgId)
-        //{
-        //    var organisation = await _context.Organisations.FindAsync(orgId);
-
-        //    if (organisation == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View("Dashboard");
-        //}
-
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -76,6 +64,8 @@ namespace Stockify.Controllers
                     Email = model.Email,
                     Phone = model.Phone
                 };
+
+                model.CreationDate = organisation.CreationDate;
 
                 _context.Add(organisation);
                 await _context.SaveChangesAsync();

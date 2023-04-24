@@ -33,7 +33,7 @@ namespace Stockify.Migrations.LoadEntryDb
                     b.Property<decimal?>("Height")
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("LoadId")
                         .IsRequired()
@@ -57,17 +57,17 @@ namespace Stockify.Migrations.LoadEntryDb
                     b.Property<decimal?>("Quantity")
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("Weight")
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("Width")
                         .HasMaxLength(100)
                         .IsUnicode(false)
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("LoadEntryId");
 

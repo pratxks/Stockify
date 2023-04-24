@@ -66,6 +66,8 @@ namespace Stockify.Controllers
                     VehicleNo = viewModel.VehicleNo
                 };
 
+                viewModel.CreationDate = load.CreationDate;
+
                 _lcontext.Add(load);
                 await _lcontext.SaveChangesAsync();
             }

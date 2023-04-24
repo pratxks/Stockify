@@ -40,19 +40,23 @@ namespace Stockify.Models
 
                 entity.Property(e => e.Weight)
                     .HasMaxLength(100)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.Quantity)
                     .HasMaxLength(100)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.Height)
                     .HasMaxLength(100)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.Width)
                     .HasMaxLength(100)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnType("decimal(18,2)");
 
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("datetime");

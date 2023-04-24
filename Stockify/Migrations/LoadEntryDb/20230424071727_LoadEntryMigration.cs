@@ -24,10 +24,10 @@ namespace Stockify.Migrations.LoadEntryDb
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProductId = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Weight = table.Column<decimal>(type: "decimal(65,30)", unicode: false, maxLength: 100, nullable: true),
-                    Quantity = table.Column<decimal>(type: "decimal(65,30)", unicode: false, maxLength: 100, nullable: true),
-                    Height = table.Column<decimal>(type: "decimal(65,30)", unicode: false, maxLength: 100, nullable: true),
-                    Width = table.Column<decimal>(type: "decimal(65,30)", unicode: false, maxLength: 100, nullable: true),
+                    Weight = table.Column<decimal>(type: "decimal(18,2)", unicode: false, maxLength: 100, nullable: true),
+                    Quantity = table.Column<decimal>(type: "decimal(18,2)", unicode: false, maxLength: 100, nullable: true),
+                    Height = table.Column<decimal>(type: "decimal(18,2)", unicode: false, maxLength: 100, nullable: true),
+                    Width = table.Column<decimal>(type: "decimal(18,2)", unicode: false, maxLength: 100, nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>

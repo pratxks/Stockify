@@ -11,9 +11,9 @@ namespace Stockify.Models
 
         public List<LoadEntry> LoadEntryList { get; set;  }
 
-        public Dictionary<LoadEntry, string> LoadEntryProductNames { get; set; }
+        public Dictionary<string, string> LoadEntryProductNames { get; set; }
 
-        public Dictionary<LoadEntry, string> LoadEntryProductTypes { get; set; }
+        public Dictionary<string, string> LoadEntryProductTypes { get; set; }
     }
 }
 
