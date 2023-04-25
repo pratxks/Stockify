@@ -1,4 +1,4 @@
-﻿@model Organisation
+﻿@model DashboardViewModel
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -241,250 +241,101 @@
             <div class="section-title-wrapper">
                 <h2 class="section-title">Recent Job Works</h2>
 
-                <button class="btn btn-link icon-box">
+                <a class="btn btn-link icon-box" asp-controller="Organisation" asp-action="ListJobWorks" asp-route-id="@Model.OrgId">
                     <span>View All</span>
 
                     <span class="material-symbols-rounded  icon" aria-hidden="true">arrow_forward</span>
-                </button>
+                </a>
             </div>
 
             <ul class="project-list">
+                @foreach (var jobwork in @Model.JobWorkList)
+                {
+                    <li class="project-item">
+                        <div class="card project-card">
 
-                <li class="project-item">
-                    <div class="card project-card">
+                            <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
+                                <span class="material-symbols-rounded  icon">more_horiz</span>
+                            </button>
 
-                        <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
-                            <span class="material-symbols-rounded  icon">more_horiz</span>
-                        </button>
+                            <ul class="ctx-menu">
 
-                        <ul class="ctx-menu">
+                                <li class="ctx-item">
+                                    <button class="ctx-menu-btn icon-box">
+                                        <span class="material-symbols-rounded  icon" aria-hidden="true">done</span>
 
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">done</span>
+                                        <span class="ctx-menu-text">Mark Done</span>
+                                    </button>
+                                </li>
 
-                                    <span class="ctx-menu-text">Mark Done</span>
-                                </button>
-                            </li>
+                                <li class="ctx-item">
+                                    <button class="ctx-menu-btn icon-box">
+                                        <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
 
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
+                                        <span class="ctx-menu-text">Edit</span>
+                                    </button>
+                                </li>
 
-                                    <span class="ctx-menu-text">Edit</span>
-                                </button>
-                            </li>
+                                <li class="divider"></li>
 
-                            <li class="divider"></li>
+                                <li class="ctx-item">
+                                    <button class="ctx-menu-btn red icon-box">
+                                        <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
 
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn red icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
+                                        <span class="ctx-menu-text">Delete</span>
+                                    </button>
+                                </li>
 
-                                    <span class="ctx-menu-text">Delete</span>
-                                </button>
-                            </li>
+                            </ul>
 
-                        </ul>
+                            <time class="card-date" datetime="2022-04-09">@jobwork.CreationDate</time>
 
-                        <time class="card-date" datetime="2022-04-09">Apr 09, 2022</time>
+                            <h3 class="card-title">
+                                <a href="#">@jobwork.Name</a>
+                            </h3>
 
-                        <h3 class="card-title">
-                            <a href="#">Job Work #1</a>
-                        </h3>
+                            <div style="display: flex; gap: 10px;">
+                                <div class="card-badge blue">@jobwork.CustomerName</div>
+                                <div class="card-badge green">Open</div>
+                                <div class="card-badge red">Closed</div>
+                            </div>
 
-                        <div class="card-badge blue">Customer Name #1</div>
 
-                        <p class="card-text">
-                            Job Works are new Projects (work orders). You can add new product entry (product being used for this job-work) using the "New Entry" button. The "View More" displays a list of Entries as well as details aboout the job work.
-                        </p>
+                            <p class="card-text">
+                                @jobwork.Description
+                            </p>
 
-                        <div class="divider card-divider"></div>
+                            <div class="divider card-divider"></div>
 
-                        <ul class="revenue-list">
+                            <ul class="revenue-list">
 
-                            <li class="revenue-item icon-box">
+                                <li class="revenue-item icon-box">
 
-                                <button class="btn btn-dashing" data-load-more>
-                                    <span class="spiner"></span>
+                                    <a class="btn btn-dashing" data-load-more asp-controller="JobWorkEntry" asp-action="CreateJobWorkEntry" asp-route-id="@jobwork.JobWorkId">
+                                        <span class="spiner"></span>
 
-                                    <span>New Entry</span>
-                                </button>
+                                        <span>New Entry</span>
+                                    </a>
 
-                            </li>
+                                </li>
 
-                            <li class="revenue-item icon-box">
+                                <li class="revenue-item icon-box">
 
-                                <button class="btn btn-dashing" data-load-more>
-                                    <span class="spiner"></span>
+                                    <a class="btn btn-dashing" data-load-more asp-controller="JobWorkEntry" asp-action="ListJobWorkEntries" asp-route-id="@jobwork.JobWorkId">
+                                        <span class="spiner"></span>
 
-                                    <span>View More</span>
-                                </button>
+                                        <span>View More</span>
+                                    </a>
 
-                            </li>
+                                </li>
 
-                        </ul>
+                            </ul>
 
-                    </div>
-                </li>
+                        </div>
+                    </li>
+                }
 
-                <li class="project-item">
-                    <div class="card project-card">
-
-                        <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
-                            <span class="material-symbols-rounded  icon">more_horiz</span>
-                        </button>
-
-                        <ul class="ctx-menu">
-
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">done</span>
-
-                                    <span class="ctx-menu-text">Mark Done</span>
-                                </button>
-                            </li>
-
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
-
-                                    <span class="ctx-menu-text">Edit</span>
-                                </button>
-                            </li>
-
-                            <li class="divider"></li>
-
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn red icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
-
-                                    <span class="ctx-menu-text">Delete</span>
-                                </button>
-                            </li>
-
-                        </ul>
-
-                        <time class="card-date" datetime="2022-04-09">Apr 09, 2022</time>
-
-                        <h3 class="card-title">
-                            <a href="#">Job Work #2</a>
-                        </h3>
-
-                        <div class="card-badge blue">Custome Name #2</div>
-
-                        <p class="card-text">
-                            Job Works are new Projects (work orders). You can add new product entry (product being used for this job-work) using the "New Entry" button. The "View More" displays a list of Entries as well as details aboout the job work.
-                        </p>
-
-                        <div class="divider card-divider"></div>
-
-                        <ul class="revenue-list">
-
-                            <li class="revenue-item icon-box">
-
-                                <button class="btn btn-dashing" data-load-more>
-                                    <span class="spiner"></span>
-
-                                    <span>New Entry</span>
-                                </button>
-
-                            </li>
-
-                            <li class="revenue-item icon-box">
-
-                                <button class="btn btn-dashing" data-load-more>
-                                    <span class="spiner"></span>
-
-                                    <span>View More</span>
-                                </button>
-
-                            </li>
-
-                        </ul>
-
-                    </div>
-                </li>
-
-                <li class="project-item">
-                    <div class="card project-card">
-
-                        <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
-                            <span class="material-symbols-rounded  icon">more_horiz</span>
-                        </button>
-
-                        <ul class="ctx-menu">
-
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">done</span>
-
-                                    <span class="ctx-menu-text">Mark Done</span>
-                                </button>
-                            </li>
-
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
-
-                                    <span class="ctx-menu-text">Edit</span>
-                                </button>
-                            </li>
-
-                            <li class="divider"></li>
-
-                            <li class="ctx-item">
-                                <button class="ctx-menu-btn red icon-box">
-                                    <span class="material-symbols-rounded  icon" aria-hidden="true">delete</span>
-
-                                    <span class="ctx-menu-text">Delete</span>
-                                </button>
-                            </li>
-
-                        </ul>
-
-                        <time class="card-date" datetime="2022-04-09">Apr 09, 2022</time>
-
-                        <h3 class="card-title">
-                            <a href="#">Job Work #3</a>
-                        </h3>
-
-                        <div class="card-badge blue">Customer Name #3</div>
-
-                        <p class="card-text">
-                            Job Works are new Projects (work orders). You can add new product entry (product being used for this job-work) using the "New Entry" button. The "View More" displays a list of Entries as well as details aboout the job work.
-                        </p>
-
-                        <div class="divider card-divider"></div>
-
-                        <ul class="revenue-list">
-
-                            <li class="revenue-item icon-box">
-
-                                <button class="btn btn-dashing" data-load-more>
-                                    <span class="spiner"></span>
-
-                                    <span>New Entry</span>
-                                </button>
-
-                            </li>
-
-                            <li class="revenue-item icon-box">
-
-                                <button class="btn btn-dashing" data-load-more>
-                                    <span class="spiner"></span>
-
-                                    <span>View More</span>
-                                </button>
-
-                            </li>
-
-                        </ul>
-
-                    </div>
-                </li>
-
-            </ul>
+                </ul>
 
         </section>
 

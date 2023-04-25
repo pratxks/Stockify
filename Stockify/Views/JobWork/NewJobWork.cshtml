@@ -5,29 +5,33 @@
 {
     <h2>Create a Job Work</h2>
     <form asp-controller="JobWork" asp-action="NewJobWork" method="post">
-        @*<div class="form-group">
-            <input type="hidden" class="form-control" id="LoadId" name="LoadId" value="@Model.JobWorkId">
-        </div>*@
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="JobWorkId" name="JobWorkId" value="@Model.JobWorkId">
+        </div>
 
         <div class="form-group">
-            <input type="hidden" class="form-control" id="LoadOrgId" name="LoadOrgId" value="@Model.JobWorkOrgId">
+            <input type="hidden" class="form-control" id="JobWorkOrgId" name="JobWorkOrgId" value="@Model.JobWorkOrgId">
         </div>
 
         <div class="form-group">
             <input type="hidden" class="form-control" id="OrgName" name="OrgName" value="@Model.OrgName">
         </div>
 
-    <div class="form-group">
-        <label for="Name">JobWork Name:</label>
-        <input type="text" class="form-control" asp-for="Name" required>
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="Status" name="Status" value="@Model.Status">
+        </div>
 
-    <div class="form-group">
-        <label for="Description">JobWork Description:</label>
-        <input type="text" class="form-control" asp-for="Description" required>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label for="Name">JobWork Name:</label>
+            <input type="text" class="form-control" asp-for="Name" required>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Description">JobWork Description:</label>
+            <input type="text" class="form-control" asp-for="Description" required>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
 
         <div class="form-group">
             <label for="LoadGroup">Load Group:</label>

@@ -11,7 +11,7 @@ using Stockify.Models;
 namespace Stockify.Migrations.JobWorkDb
 {
     [DbContext(typeof(JobWorkDbContext))]
-    [Migration("20230424071749_JobWorkMigration")]
+    [Migration("20230425060002_JobWorkMigration")]
     partial class JobWorkMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,11 +28,11 @@ namespace Stockify.Migrations.JobWorkDb
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<DateTime>("CompletionDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("CompletionDate")
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("CustomerAddress")
                         .IsRequired()

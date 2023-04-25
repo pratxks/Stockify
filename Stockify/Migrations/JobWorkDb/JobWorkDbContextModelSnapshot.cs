@@ -26,11 +26,11 @@ namespace Stockify.Migrations.JobWorkDb
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<DateTime>("CompletionDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("CompletionDate")
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("CustomerAddress")
                         .IsRequired()

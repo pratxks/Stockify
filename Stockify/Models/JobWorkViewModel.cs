@@ -15,7 +15,7 @@ namespace Stockify.Models
 
         public string LoadGroup { get; set; }
 
-        public List<string> LoadGroupList { get; set; }
+        public List<string>? LoadGroupList { get; set; }
 
         public string Status { get; set; }
 

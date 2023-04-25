@@ -49,6 +49,7 @@ namespace Stockify.Controllers
                 JobWorkId = DateTime.Now.ToString("yyyyMMddHHmmssfff"),
                 JobWorkOrgId = org.OrgId,
                 OrgName = org.Name,
+                Status = "Open",
                 LoadGroupList = loadGroups
             };
 
@@ -76,7 +77,7 @@ namespace Stockify.Controllers
                     CustomerEmail = viewModel.CustomerEmail,
                     CustomerAddress = viewModel.CustomerAddress,
                     CustomerGSTIN = viewModel.CustomerGSTIN,
-                    CustomerPAN = viewModel.CustomerPAN
+                    CustomerPAN = viewModel.CustomerPAN,
                 };
 
                 viewModel.CreationDate = jobwork.CreationDate;

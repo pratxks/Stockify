@@ -7,10 +7,10 @@ using Stockify.Models;
 
 #nullable disable
 
-namespace Stockify.Migrations.LoadEntryDb
+namespace Stockify.Migrations.JobWorkEntryDb
 {
-    [DbContext(typeof(LoadEntryDbContext))]
-    partial class LoadEntryDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(JobWorkEntryDbContext))]
+    partial class JobWorkEntryDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,13 +19,13 @@ namespace Stockify.Migrations.LoadEntryDb
                 .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Stockify.Models.LoadEntry", b =>
+            modelBuilder.Entity("Stockify.Models.JobWorkEntry", b =>
                 {
-                    b.Property<string>("LoadEntryId")
+                    b.Property<string>("JobWorkEntryId")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("LoadEntryId");
+                        .HasColumnName("JobWorkEntryId");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime");
@@ -35,7 +35,7 @@ namespace Stockify.Migrations.LoadEntryDb
                         .IsUnicode(false)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("LoadId")
+                    b.Property<string>("JobWorkId")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
@@ -68,9 +68,9 @@ namespace Stockify.Migrations.LoadEntryDb
                         .IsUnicode(false)
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("LoadEntryId");
+                    b.HasKey("JobWorkEntryId");
 
-                    b.ToTable("Load Entries", (string)null);
+                    b.ToTable("JobWork Entries", (string)null);
                 });
 #pragma warning restore 612, 618
         }

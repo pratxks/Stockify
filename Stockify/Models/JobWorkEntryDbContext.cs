@@ -3,27 +3,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Stockify.Models
 {
-    public class LoadEntryDbContext : DbContext
+    public class JobWorkEntryDbContext : DbContext
     {
-        public LoadEntryDbContext(DbContextOptions<LoadEntryDbContext> options) : base(options)
+        public JobWorkEntryDbContext(DbContextOptions<JobWorkEntryDbContext> options) : base(options)
         {
         }
 
-        public DbSet<LoadEntry> LoadEntries { get; set; }
+        public DbSet<JobWorkEntry> JobWorkEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<LoadEntry>(entity =>
+            modelBuilder.Entity<JobWorkEntry>(entity =>
             {
-                entity.ToTable("Load Entries");
+                entity.ToTable("JobWork Entries");
 
-                entity.Property(e => e.LoadEntryId)
-                    .HasColumnName("LoadEntryId")
+                entity.Property(e => e.JobWorkEntryId)
+                    .HasColumnName("JobWorkEntryId")
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.LoadId)
+                entity.Property(e => e.JobWorkId)
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);

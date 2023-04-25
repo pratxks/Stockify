@@ -95,6 +95,8 @@
     --coral: hsl(15, 100%, 65%);
     --white: hsl(0, 0%, 100%);
     --onyx: hsl(207, 8%, 21%);
+    --gptdarkgreen: hslhsl(145, 70%, 57%);
+    
     /**
    * typography
    */
@@ -387,7 +389,7 @@ body {
 
     .card-badge.green {
         --bg: var(--emerald_12);
-        --color: var(--emerald);
+        --color: var(--gptdarkgreen);
     }
 
     .card-badge.radius-pill {

@@ -16,9 +16,9 @@ namespace Stockify.Migrations.LoadEntryDb
                 name: "Load Entries",
                 columns: table => new
                 {
-                    LoadId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+                    LoadEntryId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LoadId1 = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+                    LoadId = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     OrgId = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -32,7 +32,7 @@ namespace Stockify.Migrations.LoadEntryDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Load Entries", x => x.LoadId);
+                    table.PrimaryKey("PK_Load Entries", x => x.LoadEntryId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }

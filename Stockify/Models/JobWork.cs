@@ -47,12 +47,14 @@ namespace Stockify.Models
 
         //[Required(ErrorMessage = "The product creation date is required.")]
         [DataType(DataType.Date, ErrorMessage = "Invalid date format.")]
-        public DateTime CompletionDate { get; set; }
+        public DateTime? CompletionDate { get; set; }
 
         public JobWork()
         {
             // Generate a unique ID for the product based on current timestamp
             //LoadId = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
+            Status = "Open";
 
             // Set creation date to current date and time
             CreationDate = DateTime.Now;

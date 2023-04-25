@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Stockify.Models;
@@ -12,11 +14,13 @@ namespace Stockify.Controllers
 {
     public class OrganisationController : Controller
     {
-        private readonly OrganisationDbContext _context;
+        private readonly OrganisationDbContext _ocontext;
+        private readonly JobWorkDbContext _jwcontext;
 
-        public OrganisationController(OrganisationDbContext context1)
+        public OrganisationController(OrganisationDbContext context1, JobWorkDbContext context2)
         {
-            _context = context1;
+            _ocontext = context1;
+            _jwcontext = context2;
         }
 
         // GET: Budget/Create
@@ -24,14 +28,27 @@ namespace Stockify.Controllers
         {
             ViewBag.Dashboard = true;
 
-            var organisation = _context.Organisations.Find(id);
+            var org = _ocontext.Organisations.Find(id);
 
-            if (organisation == null)
+            if (org == null)
             {
                 return NotFound();
             }
 
-            return View("Dashboard", organisation);
+            List<JobWork> jobworklist = _jwcontext.JobWorks.Where(l => l.OrgId == org.OrgId).ToList();
+
+            var viewModel = new DashboardViewModel
+            {
+                OrgId = org.OrgId,
+                Name = org.Name,
+                Type = org.Type,    
+                Location = org.Location,    
+                Phone = org.Phone,    
+                Email = org.Email,
+                JobWorkList = jobworklist
+            };
+
+            return View("Dashboard", viewModel);
         }
 
         // GET: /<controller>/
@@ -67,8 +84,8 @@ namespace Stockify.Controllers
 
                 model.CreationDate = organisation.CreationDate;
 
-                _context.Add(organisation);
-                await _context.SaveChangesAsync();
+                _ocontext.Add(organisation);
+                await _ocontext.SaveChangesAsync();
             }
 
             return View("NewOrganisation", model);
@@ -76,7 +93,7 @@ namespace Stockify.Controllers
 
         public IActionResult ListOrganisations()
         {
-            List<Organisation> organisations = _context.Organisations.OrderBy(b => b.OrgId).ToList(); ;
+            List<Organisation> organisations = _ocontext.Organisations.OrderBy(b => b.OrgId).ToList(); ;
 
             var model = new OrganisationViewModel
             {
@@ -85,6 +102,34 @@ namespace Stockify.Controllers
 
             // bind products to view
             return View("ViewOrganisation", model);
+        }
+
+        // GET: Budget/Create
+        public IActionResult ListJobWorks(string id)
+        {
+            //ViewBag.Dashboard = true;
+
+            var org = _ocontext.Organisations.Find(id);
+
+            if (org == null)
+            {
+                return NotFound();
+            }
+
+            List<JobWork> jobworklist = _jwcontext.JobWorks.Where(l => l.OrgId == org.OrgId).ToList();
+
+            var viewModel = new DashboardViewModel
+            {
+                OrgId = org.OrgId,
+                Name = org.Name,
+                Type = org.Type,
+                Location = org.Location,
+                Phone = org.Phone,
+                Email = org.Email,
+                JobWorkList = jobworklist
+            };
+
+            return View("~/Views/JobWork/ViewJobWorks.cshtml", viewModel);
         }
     }
 }
