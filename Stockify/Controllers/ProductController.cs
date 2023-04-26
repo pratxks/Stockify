@@ -49,6 +49,13 @@ namespace Stockify.Controllers
             return View("CreateProduct", viewModel);
         }
 
+        [HttpGet]
+        public JsonResult CheckProductName(string name, string orgId)
+        {
+            var exists = _pcontext.Products.Any(p => p.Name == name && p.OrgId == orgId);
+            return Json(new { exists = exists });
+        }
+
         // POST: Product/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

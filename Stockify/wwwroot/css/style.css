@@ -135,6 +135,54 @@
     --shadow-3: 0 2px 20px var(--black_08);
 }
 
+/*-----------------------------------*\
+  #SEARCH BAR
+\*-----------------------------------*/
+
+
+.search-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    padding-right: 3px; /* add some padding to the right */
+}
+
+    .search-input input {
+        flex: 1; /* use flex-grow shorthand to fill remaining space */
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        color: #333;
+        outline: none;
+    }
+
+    .search-input button {
+        background-color: #343AFF;
+        color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        margin-left: -10px; /* use a negative margin to shift the button to the left */
+    }
+
+        .search-input button i {
+            font-size: 20px;
+        }
+
+        .search-input button:focus {
+            outline: none;
+        }
+
+        .search-input button:hover {
+            background-color: #2467CD;
+        }
 
 
 

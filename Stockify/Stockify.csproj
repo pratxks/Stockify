@@ -21,6 +21,9 @@
     <None Remove="Views\JobWork\" />
     <None Remove="Views\Load Entry\" />
     <None Remove="Views\JobWorkEntry\" />
+    <None Remove="Models\ViewModels\" />
+    <None Remove="Models\Contexts\" />
+    <None Remove="Models\DataModels\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="6.10.9" />
@@ -47,6 +50,9 @@
     <Folder Include="Views\JobWork\" />
     <Folder Include="Views\LoadEntry\" />
     <Folder Include="Views\JobWorkEntry\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="Models\Contexts\" />
+    <Folder Include="Models\DataModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
