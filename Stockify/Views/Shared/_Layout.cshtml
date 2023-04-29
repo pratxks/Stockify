@@ -44,7 +44,7 @@
         <div class="container">
 
             <h1>
-                <a href="#" class="logo">Stockify</a>
+                <a href="#" class="logo">Financify</a>
             </h1>
 
             <button class="menu-toggle-btn icon-box" data-menu-toggle-btn aria-label="Toggle Menu">
@@ -58,59 +58,25 @@
 
                         <li>
                             <a class="navbar-link active icon-box" asp-area="" asp-controller="Home" asp-action="Index">
-                                <span class="material-symbols-rounded  icon">grid_view</span>
+                                <span class="material-symbols-rounded  icon">home</span>
 
                                 <span>Home</span>
                             </a>
                         </li>
 
                         <li>
-                            <a class="navbar-link icon-box" asp-area="" asp-controller="Organisation" asp-action="ListOrganisations">
-                                <span class="material-symbols-rounded  icon">list</span>
+                            <a class="navbar-link icon-box" asp-area="" asp-controller="Home" asp-action="AboutApp">
+                                <span class="material-symbols-rounded  icon">grid_view</span>
 
-                                <span>Organisations</span>
-                            </a>
-                        </li>
-
-                        @*<li>
-                            <a class="navbar-link icon-box" asp-area="" asp-controller="Home" asp-action="Index">
-                                <span class="material-symbols-rounded  icon">bar_chart</span>
-
-                                <span>Track Inventory</span>
-                            </a>
-                        </li>*@
-
-                        <li>
-                            <a class="navbar-link icon-box" asp-area="" asp-controller="Home" asp-action="Index">
-                                <span class="material-symbols-rounded  icon">bar_chart</span>
-
-                                <span>Get Report</span>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                    <ul class="user-action-list">
-
-                        <li>
-                            <a class="notification icon-box" asp-area="" asp-controller="Home" asp-action="Index">
-                                <span class="material-symbols-rounded  icon">settings</span>
+                                <span>About</span>
                             </a>
                         </li>
 
                         <li>
-                            <a class="header-profile" asp-area="" asp-controller="Home" asp-action="Index">
+                            <a class="navbar-link icon-box" asp-area="" asp-controller="Home" asp-action="TeamInfo">
+                                <span class="material-symbols-rounded  icon">group</span>
 
-                                <figure class="profile-avatar">
-                                    <img src="~/images/avatar-1.jpg" alt="Elizabeth Foster" width="32" height="32">
-                                </figure>
-
-                                <div>
-                                    <p class="profile-title">Username</p>
-
-                                    <p class="profile-subtitle">Admin</p>
-                                </div>
-
+                                <span>Team</span>
                             </a>
                         </li>
 

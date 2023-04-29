@@ -2,59 +2,54 @@
 <br />
 <br />
 
-    <div class="form-group">
-        <label for="LoadGroupStock">Load Group:</label>
+<div class="form-group">
+    <label for="LoadGroupStock">Load Group:</label>
 
-        <select class="form-control" asp-for="LoadEntryProductId" required id="LoadGroupStock">
-            <option value="">--Select Load Group-</option>
-            @foreach (var product in Model.ProductList)
-            {
-                <option value="@product.ProductId" data-producttype="@product.Type">@product.Name</option>
-            }
-        </select>
-        <input type="hidden" class="form-control" asp-for="LoadEntryProductName">
-        <input type="hidden" class="form-control" asp-for="LoadEntryProductType">
-    </div>
+    <select class="form-control" asp-for="ProductId" required id="LoadGroupStock">
+        <option value="">--Select Load Group-</option>
+        @foreach (var product in Model.ProductList)
+        {
+            <option value="@product.ProductId" data-producttype="@product.Type">@product.Name</option>
+        }
+    </select>
+    <input type="hidden" class="form-control" asp-for="StockProductName">
+    <input type="hidden" class="form-control" asp-for="StockProductType">
+</div>
 
-<h2>Load Entries for @Model.LoadName in @Model.OrgName</h2>
+<h2>Stock for @Model.LoadGroup in @Model.OrgName</h2>
 <br />
 <table class="table">
     <thead>
         <tr>
             <th align="left">Product</th>
-            <th align="left">Load Group</th>
             <th align="left">Weight</th>
             <th align="left">Quantity</th>
             <th align="left">Dimensions</th>
-            <th align="left">Entry Date</th>
-            <th align="left"></th>
-            <th align="left"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var loadentry in @Model.LoadEntryList)
+        @foreach (var stock in @Model.StockList)
         {
             <tr>
-                <td align="left">@Model.LoadEntryProductNames[loadentry.LoadEntryId]</td>
-                <td align="left">@Model.LoadGroup</td>
+                <td align="left">@Model.StockProductNames[stock.StockId]</td>
 
-                @if (Model.LoadEntryProductTypes[loadentry.LoadEntryId] == "ByWeight")
+                @if (Model.StockProductTypes[stock.StockId] == "ByWeight")
                 {
-                    <td align="left">@loadentry.Weight</td>
-                    <td align="left">@loadentry.Quantity</td>
+                    <td align="left">@stock.Weight</td>
+                    <td align="left">@stock.Quantity</td>
                     <td align="left">N/A</td>
                 }
-                else if (Model.LoadEntryProductTypes[loadentry.LoadEntryId] == "ByQuantity")
+                else if (Model.StockProductTypes[stock.StockId] == "ByQuantity")
                 {
                     <td align="left">N/A</td>
-                    <td align="left">@loadentry.Quantity</td>
+                    <td align="left">@stock.Quantity</td>
                     <td align="left">N/A</td>
                 }
-                else if (Model.LoadEntryProductTypes[loadentry.LoadEntryId] == "ByDimension")
+                else if (Model.StockProductTypes[stock.StockId] == "ByDimension")
                 {
                     <td align="left">N/A</td>
-                    <td align="left">@loadentry.Quantity</td>
-                    <td align="left">@loadentry.Height x @loadentry.Width</td>
+                    <td align="left">@stock.Quantity</td>
+                    <td align="left">@stock.Height x @stock.Width</td>
                 }
                 else
                 {
@@ -62,14 +57,6 @@
                     <td align="left">N/A</td>
                     <td align="left">N/A</td>
                 }
-
-                <td align="left">@loadentry.CreationDate</td>
-                <td align="left">
-                    <a asp-controller="Organisation" asp-action="InitDashboard" asp-route-id="@loadentry.LoadEntryId" class="btn btn-dashboard">Edit</a>
-                </td>
-                <td align="left">
-                    <a asp-controller="Organisation" asp-action="InitDashboard" asp-route-id="@loadentry.LoadEntryId" class="btn btn-dashboard">Delete</a>
-                </td>
             </tr>
         }
     </tbody>

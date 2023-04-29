@@ -17,6 +17,9 @@ namespace Stockify.Models
         [Required(ErrorMessage = "The product name is required.")]
         public string ProductId { get; set; }
 
+        [Required(ErrorMessage = "The LoadGroup is required.")]
+        public string LoadGroup { get; set; }
+
         //[Required(ErrorMessage = "The product CostPerUnitWeight is required.")]
         [Range(0, double.MaxValue, ErrorMessage = "The cost price must be greater than or equal to 0.")]
         public decimal? Weight { get; set; }

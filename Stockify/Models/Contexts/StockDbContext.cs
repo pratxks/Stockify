@@ -33,6 +33,11 @@ namespace Stockify.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.LoadGroup)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Weight)
                     .HasMaxLength(100)
                     .IsUnicode(false)

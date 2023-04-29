@@ -179,7 +179,21 @@
 
                 <p class="card-title">Inventory</p>
 
-                    <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Track Inventory</span></a>
+                <ul class="revenue-list">
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="Create" asp-route-id="@Model.OrgId"><span>Track Inventory</span></a>
+
+                    </li>
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.OrgId"><span>View Stock</span></a>
+
+                    </li>
+
+                </ul>
 
                 <div class="divider card-divider"></div>
 
@@ -190,16 +204,16 @@
                     <li class="revenue-item icon-box">
 
                         @*<button class="btn btn-dashing" data-load-more>*@
-                            @*<span class="spiner"></span> (for the spinner icon)*@
-                            <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Create Product</span></a>
-                            
+                        @*<span class="spiner"></span> (for the spinner icon)*@
+                        <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Create Product</span></a>
+
                         @*</button>*@
 
                     </li>
 
                     <li class="revenue-item icon-box">
 
-                            <a class="btn btn-dashing" asp-controller="Product" asp-action="ListProducts" asp-route-id="@Model.OrgId"><span>List Products</span></a>
+                        <a class="btn btn-dashing" asp-controller="Product" asp-action="ListProducts" asp-route-id="@Model.OrgId"><span>List Products</span></a>
 
                     </li>
 
@@ -213,13 +227,13 @@
 
                     <li class="revenue-item icon-box">
 
-                            <a class="btn btn-dashing" asp-controller="Load" asp-action="Create" asp-route-id="@Model.OrgId"><span>New Load</span></a>
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="Create" asp-route-id="@Model.OrgId"><span>New Load</span></a>
 
                     </li>
 
                     <li class="revenue-item icon-box">
 
-                            <a class="btn btn-dashing" asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.OrgId"><span>View Loads</span></a>
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.OrgId"><span>View Loads</span></a>
 
                     </li>
 

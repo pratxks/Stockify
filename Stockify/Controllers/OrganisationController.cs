@@ -131,6 +131,34 @@ namespace Stockify.Controllers
 
             return View("~/Views/JobWork/ViewJobWorks.cshtml", viewModel);
         }
+
+        // GET: List/Stock
+        public IActionResult ListStocks(string id)
+        {
+            //ViewBag.Dashboard = true;
+
+            var org = _ocontext.Organisations.Find(id);
+
+            if (org == null)
+            {
+                return NotFound();
+            }
+
+            List<JobWork> jobworklist = _jwcontext.JobWorks.Where(l => l.OrgId == org.OrgId).ToList();
+
+            var viewModel = new DashboardViewModel
+            {
+                OrgId = org.OrgId,
+                Name = org.Name,
+                Type = org.Type,
+                Location = org.Location,
+                Phone = org.Phone,
+                Email = org.Email,
+                JobWorkList = jobworklist
+            };
+
+            return View("~/Views/JobWork/ViewJobWorks.cshtml", viewModel);
+        }
     }
 }
 

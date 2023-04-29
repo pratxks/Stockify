@@ -50,6 +50,13 @@ namespace Stockify.Controllers
             return View("NewLoad", viewModel);
         }
 
+        [HttpGet]
+        public JsonResult CheckLoadName(string name, string orgId)
+        {
+            var exists = _lcontext.Loads.Any(l => l.Name == name && l.OrgId == orgId);
+            return Json(new { exists = exists });
+        }
+
         // POST: Load/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

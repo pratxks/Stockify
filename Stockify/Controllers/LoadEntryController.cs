@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using Stockify.Models;
 
@@ -10,13 +11,15 @@ namespace Stockify.Controllers
         private readonly LoadEntryDbContext _lecontext;
         private readonly ProductDbContext _pcontext;
         private readonly OrganisationDbContext _ocontext;
+        private readonly StockDbContext _scontext;
 
-        public LoadEntryController(LoadDbContext context1, ProductDbContext context2, OrganisationDbContext context3, LoadEntryDbContext context4)
+        public LoadEntryController(LoadDbContext context1, ProductDbContext context2, OrganisationDbContext context3, LoadEntryDbContext context4, StockDbContext context5)
         {
             _lcontext = context1;
             _pcontext = context2;
             _ocontext = context3;
             _lecontext = context4;
+            _scontext = context5;
         }
 
         // GET: /<controller>/
@@ -84,6 +87,91 @@ namespace Stockify.Controllers
 
                 _lecontext.Add(loadentry);
                 await _lecontext.SaveChangesAsync();
+
+                var existingStock = _scontext.Stocks.FirstOrDefault(stk => stk.ProductId == viewModel.LoadEntryProductId
+                                                               && stk.OrgId == viewModel.LoadOrgId
+                                                               && stk.LoadGroup == viewModel.LoadGroup);
+
+                if (existingStock == null)
+                {
+                    var stock = new Stock
+                    {
+                        StockId = DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                        OrgId = viewModel.LoadOrgId,
+                        ProductId = viewModel.LoadEntryProductId,
+                        LoadGroup = viewModel.LoadGroup,
+                        Quantity = viewModel.Quantity
+                    };
+                    var productType = viewModel.LoadEntryProductType;
+                    if (productType == "ByWeight")
+                    {
+                        stock.Weight = viewModel.Weight;
+                        _scontext.Add(stock);
+                    }
+                    else if (productType == "ByDimension")
+                    {
+                        stock.Height = viewModel.Height;
+                        stock.Width = viewModel.Width;
+                        _scontext.Add(stock);
+                    }
+                    else if (productType == "ByQuantity")
+                    {
+                        _scontext.Add(stock);
+                    }
+                }
+                else
+                {
+                    var productType = viewModel.LoadEntryProductType;
+                    if (productType == "ByWeight")
+                    {
+                        if (existingStock.Weight == viewModel.Weight)
+                        {
+                            existingStock.Quantity += viewModel.Quantity;
+                            _scontext.Update(existingStock);
+                        }
+                        else
+                        {
+                            var stock = new Stock
+                            {
+                                StockId = DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                                OrgId = viewModel.LoadOrgId,
+                                ProductId = viewModel.LoadEntryProductId,
+                                LoadGroup = viewModel.LoadGroup,
+                                Weight = viewModel.Weight,
+                                Quantity = viewModel.Quantity
+                            };
+                            _scontext.Add(stock);
+                        }
+                    }
+                    else if (productType == "ByDimension")
+                    {
+                        if (existingStock.Height == viewModel.Height && existingStock.Width == viewModel.Width)
+                        {
+                            existingStock.Quantity += viewModel.Quantity;
+                            _scontext.Update(existingStock);
+                        }
+                        else
+                        {
+                            var stock = new Stock
+                            {
+                                StockId = DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                                OrgId = viewModel.LoadOrgId,
+                                ProductId = viewModel.LoadEntryProductId,
+                                LoadGroup = viewModel.LoadGroup,
+                                Height = viewModel.Height,
+                                Width = viewModel.Width,
+                                Quantity = viewModel.Quantity
+                            };
+                            _scontext.Add(stock);
+                        }
+                    }
+                    else if (productType == "ByQuantity")
+                    {
+                        existingStock.Quantity += viewModel.Quantity;
+                        _scontext.Update(existingStock);
+                    }
+                }
+                await _scontext.SaveChangesAsync();
             }
 
             return View("NewLoadEntry", viewModel);
