@@ -692,6 +692,7 @@ body {
         --color: var(--pacific-blue);
     }
 
+
     .home .task-card .icon {
         font-size: 28px;
         color: var(--color);

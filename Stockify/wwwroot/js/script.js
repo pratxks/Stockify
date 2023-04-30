@@ -27,6 +27,22 @@ for (let i = 0; i < menuBtn.length; i++) {
     });
 }
 
+//const menuBtn = document.querySelectorAll("[data-menu-btn]");
+//const ctxMenu = document.querySelector(".ctx-menu");
+
+//// Add click event listener to menu buttons
+//for (let i = 0; i < menuBtn.length; i++) {
+//    menuBtn[i].addEventListener("click", function () {
+//        ctxMenu.classList.toggle("active");
+//    });
+//}
+
+//// Add mouseleave event listener to ctx-menu element
+//ctxMenu.addEventListener("mouseleave", function () {
+//    ctxMenu.classList.remove("active");
+//});
+
+
 
 
 /**

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -16,11 +17,15 @@ namespace Stockify.Controllers
     {
         private readonly OrganisationDbContext _ocontext;
         private readonly JobWorkDbContext _jwcontext;
+        private readonly StockDbContext _scontext;
+        private readonly ProductDbContext _pcontext;
 
-        public OrganisationController(OrganisationDbContext context1, JobWorkDbContext context2)
+        public OrganisationController(OrganisationDbContext context1, JobWorkDbContext context2, StockDbContext context3, ProductDbContext context4)
         {
             _ocontext = context1;
             _jwcontext = context2;
+            _scontext = context3;
+            _pcontext = context4;
         }
 
         // GET: Budget/Create
@@ -133,10 +138,8 @@ namespace Stockify.Controllers
         }
 
         // GET: List/Stock
-        public IActionResult ListStocks(string id)
+        public async Task<IActionResult> ListStocks(string id)
         {
-            //ViewBag.Dashboard = true;
-
             var org = _ocontext.Organisations.Find(id);
 
             if (org == null)
@@ -144,20 +147,37 @@ namespace Stockify.Controllers
                 return NotFound();
             }
 
-            List<JobWork> jobworklist = _jwcontext.JobWorks.Where(l => l.OrgId == org.OrgId).ToList();
+            List<Stock> stocklist = _scontext.Stocks.Where(s => s.OrgId == id).ToList();
 
-            var viewModel = new DashboardViewModel
+            var productNames = new Dictionary<string, string>();
+            var productTypes = new Dictionary<string, string>();
+
+            foreach (var stockitem in stocklist)
             {
-                OrgId = org.OrgId,
-                Name = org.Name,
-                Type = org.Type,
-                Location = org.Location,
-                Phone = org.Phone,
-                Email = org.Email,
-                JobWorkList = jobworklist
+                var product = await _pcontext.Products.FindAsync(stockitem.ProductId);
+
+                if (product == null)
+                {
+                    productNames[stockitem.StockId] = "N/A";
+                    productTypes[stockitem.StockId] = "N/A";
+                }
+                else
+                {
+                    productNames[stockitem.StockId] = product.Name;
+                    productTypes[stockitem.StockId] = product.Type;
+                }
+            }
+
+            var viewModel = new StockListViewModel
+            {
+                //OrgId = org.OrgId,
+                OrgName = org.Name,
+                StockProductNames = productNames,
+                StockProductTypes = productTypes,
+                StockList = stocklist
             };
 
-            return View("~/Views/JobWork/ViewJobWorks.cshtml", viewModel);
+            return View("~/Views/Organisation/ViewStocks.cshtml", viewModel);
         }
     }
 }

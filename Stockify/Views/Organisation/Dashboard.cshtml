@@ -33,7 +33,7 @@
                 <ul class="ctx-menu">
 
                     <li class="ctx-item">
-                         
+
                         <a asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId" class="ctx-menu-btn icon-box">
                             <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
 
@@ -97,6 +97,10 @@
 
                 <div class="divider card-divider"></div>
 
+                <p class="card-title">Job Works</p>
+
+                <br />
+
                 <ul class="revenue-list">
 
                     <li class="revenue-item icon-box">
@@ -107,19 +111,29 @@
 
                     <li class="revenue-item icon-box">
 
-                        <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>View My Job Works</span></a>
-                        
+                        <a class="btn btn-dashing" asp-controller="Organisation" asp-action="ListJobWorks" asp-route-id="@Model.OrgId"><span>View My Job Works</span></a>
+
                     </li>
 
                 </ul>
 
                 <div class="divider card-divider"></div>
 
+                <p class="card-title">Inventory</p>
+
+                <br />
+
                 <ul class="revenue-list">
 
                     <li class="revenue-item icon-box">
 
-                        <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Organisation Analytics</span></a>
+                        <a class="btn btn-dashing" asp-controller="Organisation" asp-action="ListStocks" asp-route-id="@Model.OrgId"><span>View Stock</span></a>
+
+                    </li>
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Product" asp-action="Create" asp-route-id="@Model.OrgId"><span>Quick Cutout Entry</span></a>
 
                     </li>
 
@@ -157,6 +171,19 @@
 
                 </div>
 
+                @*<div class="card task-card">
+
+                    <div class="card-icon icon-box pink">
+                        <span class="material-symbols-rounded  icon">insights</span>
+                    </div>
+
+                    <div>
+                        <a class="btn btn-dashing" asp-controller="Product" asp-action="ListProducts" asp-route-id="@Model.OrgId"><span>Analytics</span></a>
+
+                    </div>
+
+                </div>*@
+
             </div>
 
             <div class="card revenue-card">
@@ -177,25 +204,6 @@
 
                 </ul>
 
-                <p class="card-title">Inventory</p>
-
-                <ul class="revenue-list">
-
-                    <li class="revenue-item icon-box">
-
-                        <a class="btn btn-dashing" asp-controller="Load" asp-action="Create" asp-route-id="@Model.OrgId"><span>Track Inventory</span></a>
-
-                    </li>
-
-                    <li class="revenue-item icon-box">
-
-                        <a class="btn btn-dashing" asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.OrgId"><span>View Stock</span></a>
-
-                    </li>
-
-                </ul>
-
-                <div class="divider card-divider"></div>
 
                 <p class="card-title">Products</p>
 
@@ -220,6 +228,47 @@
                 </ul>
 
                 <div class="divider card-divider"></div>
+
+                <p class="card-title">Clients</p>
+
+                <ul class="revenue-list">
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="Create" asp-route-id="@Model.OrgId"><span>Create Clients</span></a>
+
+                    </li>
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.OrgId"><span>View Clients</span></a>
+
+                    </li>
+
+                </ul>
+
+                <div class="divider card-divider"></div>
+
+                <p class="card-title">Suppliers</p>
+
+                <ul class="revenue-list">
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="Create" asp-route-id="@Model.OrgId"><span>Creare Supplier</span></a>
+
+                    </li>
+
+                    <li class="revenue-item icon-box">
+
+                        <a class="btn btn-dashing" asp-controller="Load" asp-action="ListLoads" asp-route-id="@Model.OrgId"><span>View Suppliers</span></a>
+
+                    </li>
+
+                </ul>
+
+                <div class="divider card-divider"></div>
+
 
                 <p class="card-title">Stock Orders</p>
 
