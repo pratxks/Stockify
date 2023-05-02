@@ -21,6 +21,8 @@ namespace Stockify.Models
 
         public string JobWorkEntryProductType { get; set; }
 
+        public Dictionary<string, List<Stock>> ProductStockDict { get; set; } = new Dictionary<string, List<Stock>>();
+
         public List<Product>? ProductList { get; set; } = new List<Product>();
 
         public decimal? Weight { get; set; }

@@ -2,6 +2,12 @@
   #style.css yoyo
 \*-----------------------------------*/
 
+label {
+    display: flex;
+    align-items: center;
+}
+
+
 .btn-dashboard {
     color: var(--black);
     border: 1px solid var(--blue-ryb);
