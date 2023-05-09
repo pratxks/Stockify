@@ -1,8 +1,8 @@
-﻿@model Dictionary<string, List<Stock>>
+﻿@model dynamic
 
 <h3>Hello World</h3>
 <div>
-    @foreach (var productStock in Model)
+    @foreach (var productStock in Model.stockDict)
     {
         <h3>@productStock.Key</h3>
         @if (productStock.Value.Any())

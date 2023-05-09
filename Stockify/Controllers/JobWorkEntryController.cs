@@ -174,7 +174,8 @@ namespace Stockify.Controllers
             return View("ViewJobWorkEntries", model);
         }
 
-        public IActionResult GetProductStockList(string productId)
+
+        public IActionResult GetProductStockList(string productId, Dictionary<string, List<Stock>> productStDic)
         {
             if (string.IsNullOrEmpty(productId))
             {
@@ -187,36 +188,10 @@ namespace Stockify.Controllers
                 return BadRequest("Product not found");
             }
 
-            var stockList = _scontext.Stocks.Where(s => s.ProductId == product.ProductId).ToList();
-            //var stockList = productStDic.ContainsKey(productId) ? productStDic[productId] : new List<Stock>();
-            //ViewBag.ProductStock = stockList;
+            var stockList = productStDic.ContainsKey(productId) ? productStDic[productId] : new List<Stock>();
+            ViewBag.ProductStock = stockList;
 
-            Dictionary<string, List<Stock>> result = new Dictionary<string, List<Stock>>();
-
-            switch (product.Type)
-            {
-                case "ByDimension":
-                    var dimensions = stockList.Select(s => $"{s.Width} x {s.Height}").Distinct();
-                    foreach (var dimension in dimensions)
-                    {
-                        result[dimension] = stockList.Where(s => $"{s.Width} x {s.Height}" == dimension).ToList();
-                    }
-                    break;
-
-                case "ByQuantity":
-                    result["Quantity"] = stockList;
-                    break;
-
-                case "ByWeight":
-                    result["Quantity"] = stockList;
-                    result["Weight"] = stockList.Where(s => s.Weight.HasValue).ToList();
-                    break;
-
-                default:
-                    break;
-            }
-
-            return PartialView("_StockList", result);
+            return PartialView("_StockList", GetProductStockDict(product.Type, stockList));
         }
 
         private Dictionary<string, List<Stock>> GetProductStockDict(string productType, List<Stock> stockList)
@@ -248,6 +223,7 @@ namespace Stockify.Controllers
 
             return result;
         }
+
 
         public PartialViewResult StockList()
         {

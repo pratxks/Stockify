@@ -27,7 +27,6 @@
 
         <div class="form-group">
             <label for="JobWorkEntryProduct">Product:</label>
-
             <select class="form-control" asp-for="JobWorkEntryProductId" required id="JobWorkEntryProduct">
                 <option value="">--Select Product-</option>
                 @foreach (var product in @Model.ProductList)
@@ -37,6 +36,7 @@
             </select>
             <input type="hidden" class="form-control" asp-for="JobWorkEntryProductName">
             <input type="hidden" class="form-control" asp-for="JobWorkEntryProductType">
+            @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">View Stock</button>*@
         </div>
 
         <!-- Modal -->
@@ -50,16 +50,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Content from _StockList.cshtml will be inserted here -->
+                        <div id="stock"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
         </div>
-
 
 
         @*If product = ByWeight, then = ask No of kgs.
@@ -153,9 +151,14 @@ else
     <a asp-controller="JobWorkEntry" asp-action="ListJobWorkEntries" asp-route-id="@Model.JobWorkId" class="btn btn-create-organisation">View Loads</a>
 }
 
-@section Scripts {
+@section styles {
 
-    @*@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
+    @{
+        var productStockJson = Json.Serialize(Model.ProductStockDict);
+    }
+
+    Add jQuery to the page
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>$(document).ready(function () {
             // When a product is selected, show the modal
@@ -164,38 +167,69 @@ else
             });
         });</script>
 
-    <script>$(document).ready(function () {
-            $('#exampleModal').on('show.bs.modal', function (event) {
-                var modal = $(this);
-                var productId = $('#JobWorkEntryProduct').val(); // Get the selected productId from the dropdown
-                $.ajax({
-                    url: '/JobWorkEntry/GetProductStockList?productId=' + productId,
-                    type: 'GET',
-                    success: function (data) {
-                        var stockDict = data.stockDict;
-                        var productType = data.productType;
-                        var partialViewUrl = '/JobWorkEntry/_StockList?productType=' + productType + '&stockDict=' + encodeURIComponent(JSON.stringify(stockDict));
-                        console.log(partialViewUrl);
-                        $.ajax({
-                            url: partialViewUrl,
-                            type: 'POST',
-                            data: stockDict,
-                            success: function (data) {
-                                modal.find('.modal-body').html(data);
-                            },
-                            error: function () {
-                                alert('Error loading the page!');
-                            }
-                        });
-                    },
-                    error: function () {
-                        alert('Error loading the page!');
-                    }
-                });
-            });
-        });</script>
+    <script>
+    $(function() {
+      // Get references to relevant elements
+      const productSelect = $('#JobWorkEntryProduct');
+      const stockElement = $('#stock');
 
+      // Parse the product stock JSON object
+      const productStockDict = @Html.Raw(productStockJson);
 
+      // Initialize the modal popup
+      const modal = $('#myModal');
+      const modalContent = $('#myModal .modal-content');
+      const modalClose = $('#myModal .close');
+      const stockRadioButtons = stockElement.find('input[type="radio"]');
+      stockRadioButtons.on('click', (event) => {
+        const stockId = $(event.target).val();
+        console.log(stockId);
+        modal.hide();
+      });
+      modalClose.on('click', () => {
+        modal.hide();
+      });
+
+      // Listen for changes to the product select element
+      productSelect.on('change', () => {
+        // Get the selected product's type
+        const selectedOption = productSelect.find(':selected');
+        const productType = selectedOption.data('producttype');
+
+        // Get the list of available stock for the selected product
+        const productId = selectedOption.val();
+        const stockList = productStockDict[productId];
+
+        // Display relevant details based on product type
+        if (productType === 'ByDimension') {
+          // Display a list of all available stock with dimensions
+          const stockElements = $.map(stockList, stock => {
+            return `<label><input type="radio" name="stock" value="${stock.stockId}"> Quantity: ${stock.quantity} | Width: ${stock.width} | Height: ${stock.height}</label><br>`;
+          });
+          stockElement.html(stockElements.join(''));
+        } else if (productType === 'ByQuantity') {
+          // Display the available quantity as a radio button
+          const totalQuantity = stockList.reduce((total, stock) => total + stock.quantity, 0);
+          const stockElementHtml = `<label><input type="radio" name="stock" value="${stockList[0].stockId}"> Available quantity: ${totalQuantity}</label>`;
+          stockElement.html(stockElementHtml);
+        } else if (productType === 'ByWeight') {
+          // Display the available quantity and weight as a radio button
+          const totalQuantity = stockList.reduce((total, stock) => total + stock.quantity, 0);
+          const totalWeight = stockList.reduce((total, stock) => total + stock.weight * stock.quantity, 0);
+          const stockElementHtml = `<label><input type="radio" name="stock" value="${stockList[0].stockId}"> Available quantity: ${totalQuantity} | Available weight: ${totalWeight} kg</label>`;
+          stockElement.html(stockElementHtml);
+        } else {
+          // Invalid product type
+          stockElement.empty();
+        }
+
+        // Show the modal popup if there is available stock
+        if (stockRadioButtons.length > 0) {
+          modal.show();
+        }
+      });
+    });
+    </script>
 
 
 
@@ -205,9 +239,7 @@ else
             $("#Quantity").hide();
             $("#Width").hide();
             $("#Height").hide();
-            $("#btnShowModal").click(function () {
-                $("#loginModal").modal('show');
-            });
+
         });
         $("#JobWorkEntryProduct").change(function () {
             var productName = $('option:selected', this).text();
