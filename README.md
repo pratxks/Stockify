@@ -1,6 +1,6 @@
 # 🌟 Stockify - AI-Powered Inventory Management Application for Businesses
 
-![Stockify Mini UI Mocks](./Stockify/mocks.png)
+![Stockify Mini UI Mocks](./Stockify/mocks.svg)
 
 ## 🎯 Project Overview
 
