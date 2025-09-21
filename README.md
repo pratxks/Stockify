@@ -20,9 +20,11 @@ Key Features:
 ![Dashboard](./Stockify/dashboard.svg)
 
 > Orders Management:
+
 ![Orders](./Stockify/orders.svg)
 
 > Users & Access Control:
+
 ![Users](./Stockify/users.svg)
 
 ## ⚙️ Tech Stack
