@@ -54,7 +54,6 @@ pip install -r requirements.txt  # or npm install for Node.js version
 # Run Application
 python app.py  # or npm start for Node.js version
 ```
----
 
 ## 🌍 Why This Matters
 
@@ -64,8 +63,6 @@ python app.py  # or npm start for Node.js version
 - ✅ Detect unusual activity in real time using AI  
 - ✅ Streamline operations across multiple warehouses  
 
----
-
 ## 📌 Future Work
 
 - Add mobile responsive design  
@@ -73,16 +70,14 @@ python app.py  # or npm start for Node.js version
 - Expand AI models for predictive inventory management  
 - Add multi-location warehouse support  
 
----
-
 ## 🎨 Theme
 
 - **Primary color:** Yellow for KPI highlights and alerts  
 - Clean, minimalistic UI to emphasize usability and data clarity  
 
----
-
 ## 📁 Project Structure
+<pre>
+```text
 Stockify/
 ├── mocks.png
 ├── dashboard.png
@@ -92,6 +87,9 @@ Stockify/
 ├── requirements.txt
 ├── static/
 └── templates/
+```
+</pre>
+
 
 <p align="center">
 Crafted with ❤️ for businesses seeking smarter inventory management.
