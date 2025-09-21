@@ -15,13 +15,14 @@ Key Features:
 
 ## 🖼️ UI Mockups
 
-### **Dashboard**
+> Dashboard:
+
 ![Dashboard](./Stockify/dashboard.svg)
 
-### **Orders Management**
+> Orders Management:
 ![Orders](./Stockify/orders.svg)
 
-### **Users & Access Control**
+> Users & Access Control:
 ![Users](./Stockify/users.svg)
 
 ## ⚙️ Tech Stack
