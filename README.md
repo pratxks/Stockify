@@ -16,13 +16,13 @@ Key Features:
 ## 🖼️ UI Mockups
 
 ### **Dashboard**
-![Dashboard](./Stockify/dashboard.png)
+![Dashboard](./Stockify/dashboard.svg)
 
 ### **Orders Management**
-![Orders](./Stockify/orders.png)
+![Orders](./Stockify/orders.svg)
 
 ### **Users & Access Control**
-![Users](./Stockify/users.png)
+![Users](./Stockify/users.svg)
 
 ## ⚙️ Tech Stack
 
