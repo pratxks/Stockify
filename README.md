@@ -77,7 +77,6 @@ python app.py  # or npm start for Node.js version
 
 ## 📁 Project Structure
 <pre>
-```text
 Stockify/
 ├── mocks.png
 ├── dashboard.png
@@ -87,7 +86,6 @@ Stockify/
 ├── requirements.txt
 ├── static/
 └── templates/
-```
 </pre>
 
 
