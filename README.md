@@ -1,10 +1,6 @@
-# 🌟 Stockify - AI-Powered Inventory Management Web App
-
----
+# 🌟 Stockify - AI-Powered Inventory Management Application for Businesses
 
 ![Stockify Mini UI Mocks](./Stockify/mocks.png)
-
----
 
 ## 🎯 Project Overview
 
@@ -17,23 +13,16 @@ Key Features:
 - 📊 **Analytics & Reports:** Visualize stock levels, sales trends, and performance metrics.  
 - 🤖 **AI Anomaly Detection:** Detect unusual patterns in inventory or orders automatically.
 
----
-
 ## 🖼️ UI Mockups
 
-### **1. Mini UI Overview**
-![Stockify Mini UI Mocks](./Stockify/mocks.png)
-
-### **2. Dashboard**
+### **Dashboard**
 ![Dashboard](./Stockify/dashboard.png)
 
-### **3. Orders Management**
+### **Orders Management**
 ![Orders](./Stockify/orders.png)
 
-### **4. Users & Access Control**
+### **Users & Access Control**
 ![Users](./Stockify/users.png)
-
----
 
 ## ⚙️ Tech Stack
 
@@ -43,8 +32,6 @@ Key Features:
 - **Data Handling & AI:** Pandas, NumPy, Scikit-Learn (Anomaly Detection Models)  
 - **Visualization:** Chart.js, Plotly, D3.js (interactive dashboards)  
 
----
-
 ## 🧩 System Workflow
 
 1. **User Login / Authentication** → Role-based access for staff, admins, and suppliers.  
@@ -53,8 +40,6 @@ Key Features:
 4. **Order Management** → Track purchase orders, shipments, and approvals.  
 5. **User Management** → Assign roles, monitor activity logs.  
 6. **Reports & Analytics** → Visualize trends, detect anomalies, export reports.  
-
----
 
 ## 🚀 How to Run Locally
 
